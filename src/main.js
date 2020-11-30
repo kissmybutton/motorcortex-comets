@@ -1,4 +1,5 @@
 import Comets from './Incidents/Comets';
+import Stars from "./Incidents/Stars"
 
 import {
 cometValidationRules
@@ -11,6 +12,17 @@ export default {
       exportable: Comets,
       name: "Comets",
       attributesValidationRules: { ...cometValidationRules }
+    },{
+      exportable: Stars,
+      name: "Stars",
+      // attributesValidationRules: { ...cometValidationRules }
     },
   ],
 };
+
+
+
+
+
+
+

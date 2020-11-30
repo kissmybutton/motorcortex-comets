@@ -15,6 +15,7 @@ const clip = new MotorCortex.HTMLClip({
         .container{
             width: 800px;
             height: 300px;
+           
         }
         
     `,
@@ -55,7 +56,23 @@ const cometMagenta = new MyPlugin.Comets({
     selector: '.comet2',
 });
 
+const stars = new MyPlugin.Stars({
+    width: 800,
+    height: 300,
+    starMaxSize:60,
+    starMinSize:15, 
+    starColor: "#F0F0F0",
+    starGlowColor:"0 0 0 0 0.950946003   0 0 0 0 0.81265567   0 0 0 0 0.51528336  0 0 0 1 0",
+    items: 15,
+    repeats:5,
+    duration:8000
+}, {
+    selector: '.comet2',
+});
+
+
 clip.addIncident(comet, 0);
 clip.addIncident(cometMagenta, 0);
+clip.addIncident(stars,0)   
 
 const player = new Player({clip});
