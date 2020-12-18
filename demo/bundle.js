@@ -65,7 +65,7 @@ var MyPlugin = _kissmybutton_motorcortex__WEBPACK_IMPORTED_MODULE_0___default().
 
 var clip = new (_kissmybutton_motorcortex__WEBPACK_IMPORTED_MODULE_0___default().HTMLClip)({
   html: "\n    <div class=\"container\">\n        <div class=\"comet1\"> </div>\n        <div class=\"comet2\"> </div>\n    </div>",
-  css: "\n        .container{\n            width: 800px;\n            height: 300px;\n        }\n        \n    ",
+  css: "\n        .container{\n            width: 800px;\n            height: 300px;\n           \n        }\n        \n    ",
   host: document.getElementById('clip'),
   containerParams: {
     width: '800px',
@@ -100,8 +100,22 @@ var cometMagenta = new MyPlugin.Comets({
 }, {
   selector: '.comet2'
 });
+var stars = new MyPlugin.Stars({
+  width: 800,
+  height: 300,
+  starMaxSize: 60,
+  starMinSize: 15,
+  starColor: "#F0F0F0",
+  starGlowColor: "0 0 0 0 0.950946003   0 0 0 0 0.81265567   0 0 0 0 0.51528336  0 0 0 1 0",
+  items: 15,
+  repeats: 5,
+  duration: 8000
+}, {
+  selector: '.comet2'
+});
 clip.addIncident(comet, 0);
 clip.addIncident(cometMagenta, 0);
+clip.addIncident(stars, 0);
 var player = new (_kissmybutton_motorcortex_player__WEBPACK_IMPORTED_MODULE_2___default())({
   clip: clip
 });
@@ -133,7 +147,11 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
     }
   }
 
-  function n(t, e, n) {
+  function n(t, n, o) {
+    return n && e(t.prototype, n), o && e(t, o), t;
+  }
+
+  function o(t, e, n) {
     return e in t ? Object.defineProperty(t, e, {
       value: n,
       enumerable: !0,
@@ -142,7 +160,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
     }) : t[e] = n, t;
   }
 
-  function o(t, e) {
+  function r(t, e) {
     var n = Object.keys(t);
 
     if (Object.getOwnPropertySymbols) {
@@ -155,8 +173,19 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
     return n;
   }
 
-  function r(t) {
-    return (r = Object.setPrototypeOf ? Object.getPrototypeOf : function (t) {
+  function s(t, e) {
+    if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function");
+    t.prototype = Object.create(e && e.prototype, {
+      constructor: {
+        value: t,
+        writable: !0,
+        configurable: !0
+      }
+    }), e && i(t, e);
+  }
+
+  function a(t) {
+    return (a = Object.setPrototypeOf ? Object.getPrototypeOf : function (t) {
       return t.__proto__ || Object.getPrototypeOf(t);
     })(t);
   }
@@ -167,14 +196,14 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
     })(t, e);
   }
 
-  function a(t, e) {
+  function c(t, e) {
     return !e || "object" != _typeof(e) && "function" != typeof e ? function (t) {
       if (void 0 === t) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
       return t;
     }(t) : e;
   }
 
-  function s(t) {
+  function l(t) {
     var e = function () {
       if ("undefined" == typeof Reflect || !Reflect.construct) return !1;
       if (Reflect.construct.sham) return !1;
@@ -189,110 +218,189 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
 
     return function () {
       var n,
-          o = r(t);
+          o = a(t);
 
       if (e) {
-        var i = r(this).constructor;
-        n = Reflect.construct(o, arguments, i);
+        var r = a(this).constructor;
+        n = Reflect.construct(o, arguments, r);
       } else n = o.apply(this, arguments);
 
-      return a(this, n);
+      return c(this, n);
     };
   }
 
-  var c = __webpack_require__(444),
-      p = __webpack_require__(99),
-      l = c.loadPlugin(p);
+  var p = __webpack_require__(444),
+      u = __webpack_require__(99),
+      h = p.loadPlugin(u),
+      f = function (e) {
+    s(r, e);
+    var o = l(r);
+
+    function r() {
+      return t(this, r), o.apply(this, arguments);
+    }
+
+    return n(r, [{
+      key: "buildTree",
+      value: function value() {
+        for (var t = 0; t < this.attrs.items; t++) {
+          var e = -29 * Math.PI / 180,
+              n = new h.Anime({
+            animatedAttrs: {
+              left: "-".concat(this.itemData[t].width, "px"),
+              top: "".concat(Math.tan(e) * (-this.itemData[t].width - this.itemData[t].left) + this.itemData[t].top, "px")
+            }
+          }, {
+            selector: ".comet-svg-".concat(t),
+            duration: Math.floor(this.attrs.duration * (1 - this.itemData[t].size / this.attrs.cometMaxSize)),
+            repeats: this.attrs.repeats
+          });
+          this.addIncident(n, 0);
+        }
+      }
+    }, {
+      key: "font",
+      get: function get() {
+        return [{
+          type: "google-font",
+          src: "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,500;0,800;1,700;1,800;1,900&display=swap"
+        }];
+      }
+    }, {
+      key: "html",
+      get: function get() {
+        var t = [];
+        this.itemData = [];
+
+        for (var e = 0; e < this.attrs.items; e++) {
+          var n = Math.floor(Math.random() * (+this.attrs.cometMaxSize + 1 - +this.attrs.cometMinSize)) + +this.attrs.cometMinSize,
+              o = 59 * Math.PI / 180,
+              r = 31 * Math.PI / 180,
+              s = 90 * Math.PI / 180,
+              a = n,
+              i = a * Math.sin(o) / Math.sin(s),
+              c = a * Math.sin(r) / Math.sin(s),
+              l = Math.floor(Math.random() * (+this.attrs.width + i + 1 - 0)) + 0;
+          this.itemData.push({
+            left: l,
+            top: -c,
+            width: i,
+            size: n
+          }), t += ' \n        <svg class="comet-svg comet-svg-'.concat(e, '" style="left: ').concat(l, "px; top: -").concat(c, "px; width: ").concat(i, "px; height: ").concat(c, 'px;" width="1299px" height="783px" viewBox="0 0 1299 783" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">\n          <title>Comet Green</title>\n          <desc>Created with Sketch.</desc>\n          <defs>\n              <path d="M34.6937425,696.977317 C3.09857171,713.918422 -8.89072024,753.630085 8.02974729,785.263791 C24.9502148,816.885601 64.6135017,828.901413 96.2086725,811.960308 L1363.81785,115.209777 L1302.30292,0.226785891 L34.6937425,696.977317 Z" id="comet-svg-path-1"></path>\n              <linearGradient x1="14.4225092%" y1="83.2477137%" x2="92.7219121%" y2="10.390881%" id="comet-svg-linearGradient-3">\n                  <stop stop-color="').concat(this.attrs.auraOuter[0], '" stop-opacity="0.592362998" offset="0%"></stop>\n                  <stop stop-color="').concat(this.attrs.auraOuter[1], '" stop-opacity="0" offset="100%"></stop>\n              </linearGradient>\n              <path d="M21.7328197,465.583389 C1.85361792,476.251773 -5.70356816,501.251711 4.94303361,521.161272 C15.5896354,541.070832 40.5782554,548.635038 60.4693395,537.966653 L900.730996,72.6371712 L862.006359,0.253906563 L21.7328197,465.583389 Z" id="comet-svg-path-4"></path>\n              <linearGradient x1="21.542652%" y1="76.0806342%" x2="75.202337%" y2="27.5208464%" id="comet-svg-linearGradient-6">\n                  <stop stop-color="').concat(this.attrs.auraIner[0], '" offset="0%"></stop>\n                  <stop stop-color="').concat(this.attrs.auraIner[1], '" stop-opacity="0.969861438" offset="30.642612%"></stop>\n                  <stop stop-color="').concat(this.attrs.auraIner[2], '" stop-opacity="0" offset="100%"></stop>\n              </linearGradient>\n              <path d="M14.9632653,23.0042914 C1.34112245,30.3140443 -3.8044898,47.2745821 3.49010204,60.9266206 C10.7966327,74.5547711 27.7735714,79.7026526 41.4076531,72.3809557 C55.0297959,65.0831468 116.968163,0.119509448 116.968163,0.119509448 C116.968163,0.119509448 28.5854082,15.7064826 14.9632653,23.0042914" id="comet-svg-path-7"></path>\n              <linearGradient x1="2.84763913%" y1="80.4317761%" x2="100.004664%" y2="0.00394213434%" id="comet-svg-linearGradient-9">\n                  <stop stop-color="').concat(this.attrs.meteoriteColors[0], '" offset="0%"></stop>\n                  <stop stop-color="').concat(this.attrs.meteoriteColors[1], '" offset="100%"></stop>\n              </linearGradient>\n          </defs>\n          <g id="comet-svg-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\n              <g id="comet-svg-Black-Hole" transform="translate(-1113.000000, -1940.000000)">\n                  <g id="comet-svg-Comet-Green" transform="translate(1113.000000, 1903.000000)">\n                      <g id="comet-svg-Group-3">\n                          <mask id="comet-svg-mask-2" fill="white">\n                              <use xlink:href="#comet-svg-path-1"></use>\n                          </mask>\n                          <g id="comet-svg-Clip-2"></g>\n                          <path d="M34.6937425,696.977317 C3.09857171,713.918422 -8.89072024,753.630085 8.02974729,785.263791 C24.9502148,816.885601 64.6135017,828.901413 96.2086725,811.960308 L1363.81785,115.209777 L1302.30292,0.226785891 L34.6937425,696.977317 Z" id="comet-svg-Fill-1" fill="url(#comet-svg-linearGradient-3)" mask="url(#comet-svg-mask-2)"></path>\n                      </g>\n                      <g id="comet-svg-Group-6" transform="translate(23.000000, 257.000000)">\n                          <mask id="comet-svg-mask-5" fill="white">\n                              <use xlink:href="#comet-svg-path-4"></use>\n                          </mask>\n                          <g id="comet-svg-Clip-5"></g>\n                          <path d="M21.7328197,465.583389 C1.85361792,476.251773 -5.70356816,501.251711 4.94303361,521.161272 C15.5896354,541.070832 40.5782554,548.635038 60.4693395,537.966653 L900.730996,72.6371712 L862.006359,0.253906563 L21.7328197,465.583389 Z" id="comet-svg-Fill-4" fill="url(#comet-svg-linearGradient-6)" mask="url(#comet-svg-mask-5)"></path>\n                      </g>\n                      <g id="comet-svg-Group-9" transform="translate(39.000000, 710.000000)">\n                          <mask id="comet-svg-mask-8" fill="white">\n                              <use xlink:href="#comet-svg-path-7"></use>\n                          </mask>\n                          <g id="comet-svg-Clip-8"></g>\n                          <path d="M14.9632653,23.0042914 C1.34112245,30.3140443 -3.8044898,47.2745821 3.49010204,60.9266206 C10.7966327,74.5547711 27.7735714,79.7026526 41.4076531,72.3809557 C55.0297959,65.0831468 116.968163,0.119509448 116.968163,0.119509448 C116.968163,0.119509448 28.5854082,15.7064826 14.9632653,23.0042914" id="comet-svg-Fill-7" fill="url(#comet-svg-linearGradient-9)" mask="url(#comet-svg-mask-8)"></path>\n                      </g>\n                  </g>\n              </g>\n          </g>\n      </svg>');
+        }
+
+        return '\n    <div class="wrapper">\n      '.concat(t, "\n    </div>\n    \n\n    ");
+      }
+    }, {
+      key: "css",
+      get: function get() {
+        return "\n    .wrapper{\n      width: ".concat(this.attrs.width, "px;\n      height:").concat(this.attrs.height, "px;\n    }\n    .comet-svg{\n      position: absolute;\n      z-index: 3;\n    }\n\n  ");
+      }
+    }]), r;
+  }(p.HTMLClip),
+      m = __webpack_require__(444),
+      d = __webpack_require__(99),
+      g = m.loadPlugin(d),
+      v = function (e) {
+    s(r, e);
+    var o = l(r);
+
+    function r() {
+      return t(this, r), o.apply(this, arguments);
+    }
+
+    return n(r, [{
+      key: "buildTree",
+      value: function value() {
+        for (var t = 0; t < this.attrs.items; t++) {
+          var e = Math.floor(1e3 * Math.random()),
+              n = this.attrs.duration / 2 * ((Math.floor(91 * Math.random()) + 10) / 100),
+              o = new m.Combo({
+            incidents: [{
+              incidentClass: g.Anime,
+              attrs: {
+                animatedAttrs: {
+                  transform: {
+                    scale: 0
+                  }
+                }
+              },
+              props: {
+                duration: n
+              },
+              position: 0
+            }, {
+              incidentClass: g.Anime,
+              attrs: {
+                animatedAttrs: {
+                  transform: {
+                    scale: 1
+                  }
+                }
+              },
+              props: {
+                duration: n
+              },
+              position: n + e
+            }]
+          }, {
+            selector: ".stars-svg-".concat(t),
+            repeats: this.attrs.repeats
+          });
+          this.addIncident(o, e);
+        }
+      }
+    }, {
+      key: "font",
+      get: function get() {
+        return [{
+          type: "google-font",
+          src: "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,500;0,800;1,700;1,800;1,900&display=swap"
+        }];
+      }
+    }, {
+      key: "html",
+      get: function get() {
+        var t = [];
+        this.itemData = [];
+
+        for (var e = 0; e < this.attrs.items; e++) {
+          var n = Math.floor(Math.random() * (+this.attrs.starMaxSize + 1 - +this.attrs.starMinSize)) + +this.attrs.starMinSize,
+              o = Math.floor(Math.random() * (this.attrs.height - n)),
+              r = Math.floor(Math.random() * (this.attrs.width - n));
+          this.itemData.push({
+            left: r,
+            top: o,
+            size: n
+          }), console.log({
+            left: r,
+            top: o,
+            size: n
+          }), t += ' \n      <svg class="stars-svg stars-svg-'.concat(e, '" width="').concat(n, 'px" height="').concat(n, 'px" style="left: ').concat(r, "px; top:").concat(o, 'px;" viewBox="0 0 688 686" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">\n      <title>Stars</title>\n      <desc>Created with Sketch.</desc>\n      <defs>\n          <path d="M3224.65766,519.984464 C3304.46737,578.560629 3365.76874,616.01721 3408.56175,632.354208 C3450.04134,648.189779 3525.59175,609.92697 3635.21297,517.565778 L3635.21296,517.565762 C3636.05768,516.854043 3637.31943,516.961863 3638.03115,517.806585 C3638.68359,518.580949 3638.65435,519.720753 3637.96308,520.460656 C3546.86776,617.963954 3507.94937,692.818889 3521.20791,745.02546 C3534.47252,797.255965 3566.34651,853.518628 3616.82986,913.813449 L3616.82984,913.813464 C3617.53893,914.660364 3617.42721,915.921742 3616.58031,916.63083 C3615.84168,917.249269 3614.76713,917.253264 3614.02392,916.640336 C3546.16455,860.676516 3488.08066,830.622825 3439.77225,826.479261 C3391.04101,822.299431 3326.22148,852.13216 3245.31367,915.977449 L3245.31368,915.977464 C3244.44656,916.661717 3243.18893,916.513475 3242.50467,915.646357 C3241.90553,914.887087 3241.93555,913.807867 3242.57598,913.083083 C3308.57713,838.389236 3336.7605,771.964212 3327.1261,713.808009 C3317.34518,654.767408 3282.29516,591.138609 3221.97602,522.92161 L3221.97603,522.921602 C3221.24435,522.094128 3221.32202,520.83019 3222.14949,520.098517 C3222.85456,519.475072 3223.89892,519.427583 3224.65766,519.984464 Z" id="stars-svg-path-1"></path>\n          <filter x="-31.4%" y="-31.9%" width="162.5%" height="165.1%" filterUnits="objectBoundingBox" id="stars-svg-filter-2">\n              <feMorphology radius="0.5" operator="erode" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>\n              <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>\n              <feGaussianBlur stdDeviation="45" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>\n              <feColorMatrix values="').concat(this.attrs.starGlowColor, '" type="matrix" in="shadowBlurOuter1"></feColorMatrix>\n          </filter>\n      </defs>\n      <g id="stars-svg-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\n          <g id="stars-svg-Black-Hole" transform="translate(-3081.000000, -370.000000)">\n              <g id="stars-svg-Stars" transform="translate(3430.796957, 716.499508) rotate(-45.000000) translate(-3430.796957, -716.499508) ">\n                  <use fill="black" fill-opacity="1" filter="url(#stars-svg-filter-2)" xlink:href="#stars-svg-path-1"></use>\n                  <use fill="').concat(this.attrs.starColor, '" fill-rule="evenodd" xlink:href="#stars-svg-path-1"></use>\n              </g>\n          </g>\n      </g>\n  </svg>');
+        }
+
+        return '\n    <div class="wrapper">\n      '.concat(t, "\n    </div>\n    \n\n    ");
+      }
+    }, {
+      key: "css",
+      get: function get() {
+        return "\n    .wrapper{\n      width: ".concat(this.attrs.width, "px;\n      height:").concat(this.attrs.height, "px;\n      \n    }\n    .stars-svg{\n      position: absolute;\n      z-index: 3;\n\n    }\n\n  ");
+      }
+    }]), r;
+  }(m.HTMLClip);
 
   return {
     npm_name: "@kissmybutton/motorcortex-comets",
     incidents: [{
-      exportable: function (n) {
-        !function (t, e) {
-          if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function");
-          t.prototype = Object.create(e && e.prototype, {
-            constructor: {
-              value: t,
-              writable: !0,
-              configurable: !0
-            }
-          }), e && i(t, e);
-        }(p, n);
-        var o,
-            r,
-            a,
-            c = s(p);
-
-        function p() {
-          return t(this, p), c.apply(this, arguments);
-        }
-
-        return o = p, (r = [{
-          key: "buildTree",
-          value: function value() {
-            for (var t = 0; t < this.attrs.items; t++) {
-              var e = -29 * Math.PI / 180,
-                  n = new l.Anime({
-                animatedAttrs: {
-                  left: "-".concat(this.itemData[t].width, "px"),
-                  top: "".concat(Math.tan(e) * (-this.itemData[t].width - this.itemData[t].left) + this.itemData[t].top, "px")
-                }
-              }, {
-                selector: ".comet-svg-".concat(t),
-                duration: Math.floor(this.attrs.duration * (1 - this.itemData[t].size / this.attrs.cometMaxSize)),
-                repeats: this.attrs.repeats
-              });
-              this.addIncident(n, 0);
-            }
-          }
-        }, {
-          key: "font",
-          get: function get() {
-            return [{
-              type: "google-font",
-              src: "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,500;0,800;1,700;1,800;1,900&display=swap"
-            }];
-          }
-        }, {
-          key: "html",
-          get: function get() {
-            var t = [];
-            this.itemData = [];
-
-            for (var e = 0; e < this.attrs.items; e++) {
-              var n = Math.floor(Math.random() * (+this.attrs.cometMaxSize + 1 - +this.attrs.cometMinSize)) + +this.attrs.cometMinSize,
-                  o = 59 * Math.PI / 180,
-                  r = 31 * Math.PI / 180,
-                  i = 90 * Math.PI / 180,
-                  a = n,
-                  s = a * Math.sin(o) / Math.sin(i),
-                  c = a * Math.sin(r) / Math.sin(i),
-                  p = Math.floor(Math.random() * (+this.attrs.width + s + 1 - 0)) + 0;
-              this.itemData.push({
-                left: p,
-                top: -c,
-                width: s,
-                size: n
-              }), t += ' \n        <svg class="comet-svg comet-svg-'.concat(e, '" style="left: ').concat(p, "px; top: -").concat(c, "px; width: ").concat(s, "px; height: ").concat(c, 'px;" width="1299px" height="783px" viewBox="0 0 1299 783" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">\n          <title>Comet Green</title>\n          <desc>Created with Sketch.</desc>\n          <defs>\n              <path d="M34.6937425,696.977317 C3.09857171,713.918422 -8.89072024,753.630085 8.02974729,785.263791 C24.9502148,816.885601 64.6135017,828.901413 96.2086725,811.960308 L1363.81785,115.209777 L1302.30292,0.226785891 L34.6937425,696.977317 Z" id="comet-svg-path-1"></path>\n              <linearGradient x1="14.4225092%" y1="83.2477137%" x2="92.7219121%" y2="10.390881%" id="comet-svg-linearGradient-3">\n                  <stop stop-color="').concat(this.attrs.auraOuter[0], '" stop-opacity="0.592362998" offset="0%"></stop>\n                  <stop stop-color="').concat(this.attrs.auraOuter[1], '" stop-opacity="0" offset="100%"></stop>\n              </linearGradient>\n              <path d="M21.7328197,465.583389 C1.85361792,476.251773 -5.70356816,501.251711 4.94303361,521.161272 C15.5896354,541.070832 40.5782554,548.635038 60.4693395,537.966653 L900.730996,72.6371712 L862.006359,0.253906563 L21.7328197,465.583389 Z" id="comet-svg-path-4"></path>\n              <linearGradient x1="21.542652%" y1="76.0806342%" x2="75.202337%" y2="27.5208464%" id="comet-svg-linearGradient-6">\n                  <stop stop-color="').concat(this.attrs.auraIner[0], '" offset="0%"></stop>\n                  <stop stop-color="').concat(this.attrs.auraIner[1], '" stop-opacity="0.969861438" offset="30.642612%"></stop>\n                  <stop stop-color="').concat(this.attrs.auraIner[2], '" stop-opacity="0" offset="100%"></stop>\n              </linearGradient>\n              <path d="M14.9632653,23.0042914 C1.34112245,30.3140443 -3.8044898,47.2745821 3.49010204,60.9266206 C10.7966327,74.5547711 27.7735714,79.7026526 41.4076531,72.3809557 C55.0297959,65.0831468 116.968163,0.119509448 116.968163,0.119509448 C116.968163,0.119509448 28.5854082,15.7064826 14.9632653,23.0042914" id="comet-svg-path-7"></path>\n              <linearGradient x1="2.84763913%" y1="80.4317761%" x2="100.004664%" y2="0.00394213434%" id="comet-svg-linearGradient-9">\n                  <stop stop-color="').concat(this.attrs.meteoriteColors[0], '" offset="0%"></stop>\n                  <stop stop-color="').concat(this.attrs.meteoriteColors[1], '" offset="100%"></stop>\n              </linearGradient>\n          </defs>\n          <g id="comet-svg-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\n              <g id="comet-svg-Black-Hole" transform="translate(-1113.000000, -1940.000000)">\n                  <g id="comet-svg-Comet-Green" transform="translate(1113.000000, 1903.000000)">\n                      <g id="comet-svg-Group-3">\n                          <mask id="comet-svg-mask-2" fill="white">\n                              <use xlink:href="#comet-svg-path-1"></use>\n                          </mask>\n                          <g id="comet-svg-Clip-2"></g>\n                          <path d="M34.6937425,696.977317 C3.09857171,713.918422 -8.89072024,753.630085 8.02974729,785.263791 C24.9502148,816.885601 64.6135017,828.901413 96.2086725,811.960308 L1363.81785,115.209777 L1302.30292,0.226785891 L34.6937425,696.977317 Z" id="comet-svg-Fill-1" fill="url(#comet-svg-linearGradient-3)" mask="url(#comet-svg-mask-2)"></path>\n                      </g>\n                      <g id="comet-svg-Group-6" transform="translate(23.000000, 257.000000)">\n                          <mask id="comet-svg-mask-5" fill="white">\n                              <use xlink:href="#comet-svg-path-4"></use>\n                          </mask>\n                          <g id="comet-svg-Clip-5"></g>\n                          <path d="M21.7328197,465.583389 C1.85361792,476.251773 -5.70356816,501.251711 4.94303361,521.161272 C15.5896354,541.070832 40.5782554,548.635038 60.4693395,537.966653 L900.730996,72.6371712 L862.006359,0.253906563 L21.7328197,465.583389 Z" id="comet-svg-Fill-4" fill="url(#comet-svg-linearGradient-6)" mask="url(#comet-svg-mask-5)"></path>\n                      </g>\n                      <g id="comet-svg-Group-9" transform="translate(39.000000, 710.000000)">\n                          <mask id="comet-svg-mask-8" fill="white">\n                              <use xlink:href="#comet-svg-path-7"></use>\n                          </mask>\n                          <g id="comet-svg-Clip-8"></g>\n                          <path d="M14.9632653,23.0042914 C1.34112245,30.3140443 -3.8044898,47.2745821 3.49010204,60.9266206 C10.7966327,74.5547711 27.7735714,79.7026526 41.4076531,72.3809557 C55.0297959,65.0831468 116.968163,0.119509448 116.968163,0.119509448 C116.968163,0.119509448 28.5854082,15.7064826 14.9632653,23.0042914" id="comet-svg-Fill-7" fill="url(#comet-svg-linearGradient-9)" mask="url(#comet-svg-mask-8)"></path>\n                      </g>\n                  </g>\n              </g>\n          </g>\n      </svg>');
-            }
-
-            return '\n    <div class="wrapper">\n      '.concat(t, "\n    </div>\n    \n\n    ");
-          }
-        }, {
-          key: "css",
-          get: function get() {
-            return "\n    .wrapper{\n      width: ".concat(this.attrs.width, "px;\n      height:").concat(this.attrs.height, "px;\n    }\n    .comet-svg{\n      position: absolute;\n      z-index: 3;\n    }\n\n  ");
-          }
-        }]) && e(o.prototype, r), a && e(o, a), p;
-      }(c.HTMLClip),
+      exportable: f,
       name: "Comets",
       attributesValidationRules: function (t) {
         for (var e = 1; e < arguments.length; e++) {
-          var r = null != arguments[e] ? arguments[e] : {};
-          e % 2 ? o(Object(r), !0).forEach(function (e) {
-            n(t, e, r[e]);
-          }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(r)) : o(Object(r)).forEach(function (e) {
-            Object.defineProperty(t, e, Object.getOwnPropertyDescriptor(r, e));
+          var n = null != arguments[e] ? arguments[e] : {};
+          e % 2 ? r(Object(n), !0).forEach(function (e) {
+            o(t, e, n[e]);
+          }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(n)) : r(Object(n)).forEach(function (e) {
+            Object.defineProperty(t, e, Object.getOwnPropertyDescriptor(n, e));
           });
         }
 
@@ -354,6 +462,9 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
           type: "number"
         }
       })
+    }, {
+      exportable: v,
+      name: "Stars"
     }]
   };
 });
@@ -1632,7 +1743,7 @@ return Promise$1;
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => "44ba2437b51d12ae371d"
+/******/ 		__webpack_require__.h = () => "7e46e70e9879d15930b5"
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
