@@ -1,6 +1,6 @@
 {
   "name": "@kissmybutton/motorcortex-comets",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Comets fall plugin ",
   "main": "dist/motorcortex-comets.cjs.js",
   "module": "dist/motorcortex-comets.esm.js",
@@ -37,10 +37,10 @@
     }
   },
   "dependencies": {
-    "@kissmybutton/motorcortex-anime": "2.1.8"
+    "@kissmybutton/motorcortex-anime": "2.1.10"
   },
   "peerDependencies": {
-    "@kissmybutton/motorcortex": "6.2.2"
+    "@kissmybutton/motorcortex": "6.2.3"
   },
   "devDependencies": {
     "@babel/cli": "7.12.8",
@@ -48,7 +48,7 @@
     "@babel/plugin-syntax-jsx": "7.12.1",
     "@babel/plugin-transform-react-jsx": "7.12.7",
     "@babel/preset-env": "7.12.7",
-    "@kissmybutton/motorcortex": "6.2.2",
+    "@kissmybutton/motorcortex": "6.2.3",
     "@kissmybutton/motorcortex-player": "1.5.11",
     "babel-eslint": "10.1.0",
     "babel-loader": "8.2.1",
