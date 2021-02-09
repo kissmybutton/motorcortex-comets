@@ -31,55 +31,41 @@ export default class Comets extends MotorCortex.HTMLClip {
       const left= (Math.floor(Math.random() * (+this.attrs.width+a + 1 - +0)) + +0)
       this.itemData.push({left,top:-b,width:a,size})
       const comet =` 
-        <svg class="comet-svg comet-svg-${i}" style="left: ${left}px; top: -${b}px; width: ${a}px; height: ${b}px;" width="1299px" height="783px" viewBox="0 0 1299 783" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <title>Comet Green</title>
-          <desc>Created with Sketch.</desc>
-          <defs>
-              <path d="M34.6937425,696.977317 C3.09857171,713.918422 -8.89072024,753.630085 8.02974729,785.263791 C24.9502148,816.885601 64.6135017,828.901413 96.2086725,811.960308 L1363.81785,115.209777 L1302.30292,0.226785891 L34.6937425,696.977317 Z" id="comet-svg-path-1"></path>
-              <linearGradient x1="14.4225092%" y1="83.2477137%" x2="92.7219121%" y2="10.390881%" id="comet-svg-linearGradient-3">
-                  <stop stop-color="${this.attrs.auraOuter[0]}" stop-opacity="0.592362998" offset="0%"></stop>
-                  <stop stop-color="${this.attrs.auraOuter[1]}" stop-opacity="0" offset="100%"></stop>
-              </linearGradient>
-              <path d="M21.7328197,465.583389 C1.85361792,476.251773 -5.70356816,501.251711 4.94303361,521.161272 C15.5896354,541.070832 40.5782554,548.635038 60.4693395,537.966653 L900.730996,72.6371712 L862.006359,0.253906563 L21.7328197,465.583389 Z" id="comet-svg-path-4"></path>
-              <linearGradient x1="21.542652%" y1="76.0806342%" x2="75.202337%" y2="27.5208464%" id="comet-svg-linearGradient-6">
-                  <stop stop-color="${this.attrs.auraIner[0]}" offset="0%"></stop>
-                  <stop stop-color="${this.attrs.auraIner[1]}" stop-opacity="0.969861438" offset="30.642612%"></stop>
-                  <stop stop-color="${this.attrs.auraIner[2]}" stop-opacity="0" offset="100%"></stop>
-              </linearGradient>
-              <path d="M14.9632653,23.0042914 C1.34112245,30.3140443 -3.8044898,47.2745821 3.49010204,60.9266206 C10.7966327,74.5547711 27.7735714,79.7026526 41.4076531,72.3809557 C55.0297959,65.0831468 116.968163,0.119509448 116.968163,0.119509448 C116.968163,0.119509448 28.5854082,15.7064826 14.9632653,23.0042914" id="comet-svg-path-7"></path>
-              <linearGradient x1="2.84763913%" y1="80.4317761%" x2="100.004664%" y2="0.00394213434%" id="comet-svg-linearGradient-9">
-                  <stop stop-color="${this.attrs.meteoriteColors[0]}" offset="0%"></stop>
-                  <stop stop-color="${this.attrs.meteoriteColors[1]}" offset="100%"></stop>
-              </linearGradient>
-          </defs>
-          <g id="comet-svg-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-              <g id="comet-svg-Black-Hole" transform="translate(-1113.000000, -1940.000000)">
-                  <g id="comet-svg-Comet-Green" transform="translate(1113.000000, 1903.000000)">
-                      <g id="comet-svg-Group-3">
-                          <mask id="comet-svg-mask-2" fill="white">
-                              <use xlink:href="#comet-svg-path-1"></use>
-                          </mask>
-                          <g id="comet-svg-Clip-2"></g>
-                          <path d="M34.6937425,696.977317 C3.09857171,713.918422 -8.89072024,753.630085 8.02974729,785.263791 C24.9502148,816.885601 64.6135017,828.901413 96.2086725,811.960308 L1363.81785,115.209777 L1302.30292,0.226785891 L34.6937425,696.977317 Z" id="comet-svg-Fill-1" fill="url(#comet-svg-linearGradient-3)" mask="url(#comet-svg-mask-2)"></path>
-                      </g>
-                      <g id="comet-svg-Group-6" transform="translate(23.000000, 257.000000)">
-                          <mask id="comet-svg-mask-5" fill="white">
-                              <use xlink:href="#comet-svg-path-4"></use>
-                          </mask>
-                          <g id="comet-svg-Clip-5"></g>
-                          <path d="M21.7328197,465.583389 C1.85361792,476.251773 -5.70356816,501.251711 4.94303361,521.161272 C15.5896354,541.070832 40.5782554,548.635038 60.4693395,537.966653 L900.730996,72.6371712 L862.006359,0.253906563 L21.7328197,465.583389 Z" id="comet-svg-Fill-4" fill="url(#comet-svg-linearGradient-6)" mask="url(#comet-svg-mask-5)"></path>
-                      </g>
-                      <g id="comet-svg-Group-9" transform="translate(39.000000, 710.000000)">
-                          <mask id="comet-svg-mask-8" fill="white">
-                              <use xlink:href="#comet-svg-path-7"></use>
-                          </mask>
-                          <g id="comet-svg-Clip-8"></g>
-                          <path d="M14.9632653,23.0042914 C1.34112245,30.3140443 -3.8044898,47.2745821 3.49010204,60.9266206 C10.7966327,74.5547711 27.7735714,79.7026526 41.4076531,72.3809557 C55.0297959,65.0831468 116.968163,0.119509448 116.968163,0.119509448 C116.968163,0.119509448 28.5854082,15.7064826 14.9632653,23.0042914" id="comet-svg-Fill-7" fill="url(#comet-svg-linearGradient-9)" mask="url(#comet-svg-mask-8)"></path>
-                      </g>
-                  </g>
-              </g>
-          </g>
-      </svg>`
+      <svg class="comet-svg comet-svg-${i}" style="left: ${left}px; top: -${b}px; width: ${a}px; height: ${b}px;" xmlns="http://www.w3.org/2000/svg" class="comet-green-svg" data-name="Layer 1" viewBox="0 0 450 270.44">
+      <defs>
+        <linearGradient id="b" x1="-56.99" x2="-56.74" y1="394.68" y2="394.93" gradientTransform="matrix(1363.47 0 0 -819.42 77776.05 323638.12)" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="${this.attrs.auraOuter[0]}" stop-opacity=".59"/>
+          <stop offset="1" stop-color="${this.attrs.auraOuter[1]}" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="d" x1="-56.97" x2="-56.79" y1="394.95" y2="395.11" gradientTransform="matrix(900.62 0 0 -542.55 51377.26 214502.16)" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="${this.attrs.auraIner[0]}"/>
+          <stop offset=".31" stop-color="${this.attrs.auraIner[1]}" stop-opacity=".97"/>
+          <stop offset="1" stop-color="${this.attrs.auraIner[2]}" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="f" x1="-56.81" x2="-56.49" y1="399.49" y2="399.76" gradientTransform="matrix(116.79 0 0 -75.59 6649.18 30453.64)" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="${this.attrs.meteoriteColors[0]}"/>
+          <stop offset="1" stop-color="${this.attrs.meteoriteColors[1]}"/>
+        </linearGradient>
+        <mask id="a" width="450" height="270.44" x="0" y="0" maskUnits="userSpaceOnUse">
+          <path fill="#fff" fill-rule="evenodd" d="M11.33 230a21.52 21.52 0 0020.31 38L450 38 429.7 0 11.33 230z"/>
+        </mask>
+        <mask id="c" width="297.24" height="179.06" x="7.51" y="84.83" maskUnits="userSpaceOnUse">
+          <path fill="#fff" fill-rule="evenodd" d="M14.65 238.41a13.55 13.55 0 0012.78 23.89l277.32-153.58L292 84.83 14.65 238.41z"/>
+        </mask>
+        <mask id="e" width="38.55" height="24.95" x="12.81" y="234.29" maskUnits="userSpaceOnUse">
+          <path fill="#fff" fill-rule="evenodd" d="M17.69 241.85a9.24 9.24 0 008.73 16.29c4.5-2.41 24.94-23.85 24.94-23.85s-29.17 5.15-33.67 7.56"/>
+        </mask>
+      </defs>
+      <g mask="url(#a)">
+        <path fill="url(#b)" fill-rule="evenodd" d="M11.33 230a21.52 21.52 0 0020.31 38L450 38 429.7 0 11.33 230z"/>
+      </g>
+      <g mask="url(#c)">
+        <path fill="url(#d)" fill-rule="evenodd" d="M14.65 238.41a13.55 13.55 0 0012.78 23.89l277.32-153.58L292 84.83 14.65 238.41z"/>
+      </g>
+      <g mask="url(#e)">
+        <path fill="url(#f)" fill-rule="evenodd" d="M17.69 241.85a9.24 9.24 0 008.73 16.29c4.5-2.41 24.94-23.85 24.94-23.85s-29.17 5.15-33.67 7.56"/>
+      </g>
+    </svg>`
 
       list+=comet
   }
