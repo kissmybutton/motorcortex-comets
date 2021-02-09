@@ -143,16 +143,16 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
 
   function e(t, e) {
     for (var n = 0; n < e.length; n++) {
-      var r = e[n];
-      r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), Object.defineProperty(t, r.key, r);
+      var o = e[n];
+      o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(t, o.key, o);
     }
   }
 
-  function n(t, n, r) {
-    return n && e(t.prototype, n), r && e(t, r), t;
+  function n(t, n, o) {
+    return n && e(t.prototype, n), o && e(t, o), t;
   }
 
-  function r(t, e, n) {
+  function o(t, e, n) {
     return e in t ? Object.defineProperty(t, e, {
       value: n,
       enumerable: !0,
@@ -161,20 +161,20 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
     }) : t[e] = n, t;
   }
 
-  function o(t, e) {
+  function r(t, e) {
     var n = Object.keys(t);
 
     if (Object.getOwnPropertySymbols) {
-      var r = Object.getOwnPropertySymbols(t);
-      e && (r = r.filter(function (e) {
+      var o = Object.getOwnPropertySymbols(t);
+      e && (o = o.filter(function (e) {
         return Object.getOwnPropertyDescriptor(t, e).enumerable;
-      })), n.push.apply(n, r);
+      })), n.push.apply(n, o);
     }
 
     return n;
   }
 
-  function s(t, e) {
+  function a(t, e) {
     if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function");
     t.prototype = Object.create(e && e.prototype, {
       constructor: {
@@ -182,17 +182,17 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
         writable: !0,
         configurable: !0
       }
-    }), e && i(t, e);
+    }), e && s(t, e);
   }
 
-  function a(t) {
-    return (a = Object.setPrototypeOf ? Object.getPrototypeOf : function (t) {
+  function i(t) {
+    return (i = Object.setPrototypeOf ? Object.getPrototypeOf : function (t) {
       return t.__proto__ || Object.getPrototypeOf(t);
     })(t);
   }
 
-  function i(t, e) {
-    return (i = Object.setPrototypeOf || function (t, e) {
+  function s(t, e) {
+    return (s = Object.setPrototypeOf || function (t, e) {
       return t.__proto__ = e, t;
     })(t, e);
   }
@@ -204,7 +204,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
     }(t) : e;
   }
 
-  function l(t) {
+  function p(t) {
     var e = function () {
       if ("undefined" == typeof Reflect || !Reflect.construct) return !1;
       if (Reflect.construct.sham) return !1;
@@ -219,34 +219,34 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
 
     return function () {
       var n,
-          r = a(t);
+          o = i(t);
 
       if (e) {
-        var o = a(this).constructor;
-        n = Reflect.construct(r, arguments, o);
-      } else n = r.apply(this, arguments);
+        var r = i(this).constructor;
+        n = Reflect.construct(o, arguments, r);
+      } else n = o.apply(this, arguments);
 
       return c(this, n);
     };
   }
 
-  var p = __webpack_require__(444),
-      u = __webpack_require__(99),
-      h = p.loadPlugin(u),
-      f = function (e) {
-    s(o, e);
-    var r = l(o);
+  var f = __webpack_require__(444),
+      l = __webpack_require__(99),
+      u = f.loadPlugin(l),
+      h = function (e) {
+    a(r, e);
+    var o = p(r);
 
-    function o() {
-      return t(this, o), r.apply(this, arguments);
+    function r() {
+      return t(this, r), o.apply(this, arguments);
     }
 
-    return n(o, [{
+    return n(r, [{
       key: "buildTree",
       value: function value() {
         for (var t = 0; t < this.attrs.items; t++) {
           var e = -29 * Math.PI / 180,
-              n = new h.Anime({
+              n = new u.Anime({
             animatedAttrs: {
               left: "-".concat(this.itemData[t].width, "px"),
               top: "".concat(Math.tan(e) * (-this.itemData[t].width - this.itemData[t].left) + this.itemData[t].top, "px")
@@ -275,19 +275,19 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
 
         for (var e = 0; e < this.attrs.items; e++) {
           var n = Math.floor(Math.random() * (+this.attrs.cometMaxSize + 1 - +this.attrs.cometMinSize)) + +this.attrs.cometMinSize,
-              r = 59 * Math.PI / 180,
-              o = 31 * Math.PI / 180,
-              s = 90 * Math.PI / 180,
-              a = n,
-              i = a * Math.sin(r) / Math.sin(s),
-              c = a * Math.sin(o) / Math.sin(s),
-              l = Math.floor(Math.random() * (+this.attrs.width + i + 1 - 0)) + 0;
+              o = 59 * Math.PI / 180,
+              r = 31 * Math.PI / 180,
+              a = 90 * Math.PI / 180,
+              i = n,
+              s = i * Math.sin(o) / Math.sin(a),
+              c = i * Math.sin(r) / Math.sin(a),
+              p = Math.floor(Math.random() * (+this.attrs.width + s + 1 - 0)) + 0;
           this.itemData.push({
-            left: l,
+            left: p,
             top: -c,
-            width: i,
+            width: s,
             size: n
-          }), t += ' \n        <svg class="comet-svg comet-svg-'.concat(e, '" style="left: ').concat(l, "px; top: -").concat(c, "px; width: ").concat(i, "px; height: ").concat(c, 'px;" width="1299px" height="783px" viewBox="0 0 1299 783" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">\n          <title>Comet Green</title>\n          <desc>Created with Sketch.</desc>\n          <defs>\n              <path d="M34.6937425,696.977317 C3.09857171,713.918422 -8.89072024,753.630085 8.02974729,785.263791 C24.9502148,816.885601 64.6135017,828.901413 96.2086725,811.960308 L1363.81785,115.209777 L1302.30292,0.226785891 L34.6937425,696.977317 Z" id="comet-svg-path-1"></path>\n              <linearGradient x1="14.4225092%" y1="83.2477137%" x2="92.7219121%" y2="10.390881%" id="comet-svg-linearGradient-3">\n                  <stop stop-color="').concat(this.attrs.auraOuter[0], '" stop-opacity="0.592362998" offset="0%"></stop>\n                  <stop stop-color="').concat(this.attrs.auraOuter[1], '" stop-opacity="0" offset="100%"></stop>\n              </linearGradient>\n              <path d="M21.7328197,465.583389 C1.85361792,476.251773 -5.70356816,501.251711 4.94303361,521.161272 C15.5896354,541.070832 40.5782554,548.635038 60.4693395,537.966653 L900.730996,72.6371712 L862.006359,0.253906563 L21.7328197,465.583389 Z" id="comet-svg-path-4"></path>\n              <linearGradient x1="21.542652%" y1="76.0806342%" x2="75.202337%" y2="27.5208464%" id="comet-svg-linearGradient-6">\n                  <stop stop-color="').concat(this.attrs.auraIner[0], '" offset="0%"></stop>\n                  <stop stop-color="').concat(this.attrs.auraIner[1], '" stop-opacity="0.969861438" offset="30.642612%"></stop>\n                  <stop stop-color="').concat(this.attrs.auraIner[2], '" stop-opacity="0" offset="100%"></stop>\n              </linearGradient>\n              <path d="M14.9632653,23.0042914 C1.34112245,30.3140443 -3.8044898,47.2745821 3.49010204,60.9266206 C10.7966327,74.5547711 27.7735714,79.7026526 41.4076531,72.3809557 C55.0297959,65.0831468 116.968163,0.119509448 116.968163,0.119509448 C116.968163,0.119509448 28.5854082,15.7064826 14.9632653,23.0042914" id="comet-svg-path-7"></path>\n              <linearGradient x1="2.84763913%" y1="80.4317761%" x2="100.004664%" y2="0.00394213434%" id="comet-svg-linearGradient-9">\n                  <stop stop-color="').concat(this.attrs.meteoriteColors[0], '" offset="0%"></stop>\n                  <stop stop-color="').concat(this.attrs.meteoriteColors[1], '" offset="100%"></stop>\n              </linearGradient>\n          </defs>\n          <g id="comet-svg-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\n              <g id="comet-svg-Black-Hole" transform="translate(-1113.000000, -1940.000000)">\n                  <g id="comet-svg-Comet-Green" transform="translate(1113.000000, 1903.000000)">\n                      <g id="comet-svg-Group-3">\n                          <mask id="comet-svg-mask-2" fill="white">\n                              <use xlink:href="#comet-svg-path-1"></use>\n                          </mask>\n                          <g id="comet-svg-Clip-2"></g>\n                          <path d="M34.6937425,696.977317 C3.09857171,713.918422 -8.89072024,753.630085 8.02974729,785.263791 C24.9502148,816.885601 64.6135017,828.901413 96.2086725,811.960308 L1363.81785,115.209777 L1302.30292,0.226785891 L34.6937425,696.977317 Z" id="comet-svg-Fill-1" fill="url(#comet-svg-linearGradient-3)" mask="url(#comet-svg-mask-2)"></path>\n                      </g>\n                      <g id="comet-svg-Group-6" transform="translate(23.000000, 257.000000)">\n                          <mask id="comet-svg-mask-5" fill="white">\n                              <use xlink:href="#comet-svg-path-4"></use>\n                          </mask>\n                          <g id="comet-svg-Clip-5"></g>\n                          <path d="M21.7328197,465.583389 C1.85361792,476.251773 -5.70356816,501.251711 4.94303361,521.161272 C15.5896354,541.070832 40.5782554,548.635038 60.4693395,537.966653 L900.730996,72.6371712 L862.006359,0.253906563 L21.7328197,465.583389 Z" id="comet-svg-Fill-4" fill="url(#comet-svg-linearGradient-6)" mask="url(#comet-svg-mask-5)"></path>\n                      </g>\n                      <g id="comet-svg-Group-9" transform="translate(39.000000, 710.000000)">\n                          <mask id="comet-svg-mask-8" fill="white">\n                              <use xlink:href="#comet-svg-path-7"></use>\n                          </mask>\n                          <g id="comet-svg-Clip-8"></g>\n                          <path d="M14.9632653,23.0042914 C1.34112245,30.3140443 -3.8044898,47.2745821 3.49010204,60.9266206 C10.7966327,74.5547711 27.7735714,79.7026526 41.4076531,72.3809557 C55.0297959,65.0831468 116.968163,0.119509448 116.968163,0.119509448 C116.968163,0.119509448 28.5854082,15.7064826 14.9632653,23.0042914" id="comet-svg-Fill-7" fill="url(#comet-svg-linearGradient-9)" mask="url(#comet-svg-mask-8)"></path>\n                      </g>\n                  </g>\n              </g>\n          </g>\n      </svg>');
+          }), t += ' \n      <svg class="comet-svg comet-svg-'.concat(e, '" style="left: ').concat(p, "px; top: -").concat(c, "px; width: ").concat(s, "px; height: ").concat(c, 'px;" xmlns="http://www.w3.org/2000/svg" class="comet-green-svg" data-name="Layer 1" viewBox="0 0 450 270.44">\n      <defs>\n        <linearGradient id="b" x1="-56.99" x2="-56.74" y1="394.68" y2="394.93" gradientTransform="matrix(1363.47 0 0 -819.42 77776.05 323638.12)" gradientUnits="userSpaceOnUse">\n          <stop offset="0" stop-color="').concat(this.attrs.auraOuter[0], '" stop-opacity=".59"/>\n          <stop offset="1" stop-color="').concat(this.attrs.auraOuter[1], '" stop-opacity="0"/>\n        </linearGradient>\n        <linearGradient id="d" x1="-56.97" x2="-56.79" y1="394.95" y2="395.11" gradientTransform="matrix(900.62 0 0 -542.55 51377.26 214502.16)" gradientUnits="userSpaceOnUse">\n          <stop offset="0" stop-color="').concat(this.attrs.auraIner[0], '"/>\n          <stop offset=".31" stop-color="').concat(this.attrs.auraIner[1], '" stop-opacity=".97"/>\n          <stop offset="1" stop-color="').concat(this.attrs.auraIner[2], '" stop-opacity="0"/>\n        </linearGradient>\n        <linearGradient id="f" x1="-56.81" x2="-56.49" y1="399.49" y2="399.76" gradientTransform="matrix(116.79 0 0 -75.59 6649.18 30453.64)" gradientUnits="userSpaceOnUse">\n          <stop offset="0" stop-color="').concat(this.attrs.meteoriteColors[0], '"/>\n          <stop offset="1" stop-color="').concat(this.attrs.meteoriteColors[1], '"/>\n        </linearGradient>\n        <mask id="a" width="450" height="270.44" x="0" y="0" maskUnits="userSpaceOnUse">\n          <path fill="#fff" fill-rule="evenodd" d="M11.33 230a21.52 21.52 0 0020.31 38L450 38 429.7 0 11.33 230z"/>\n        </mask>\n        <mask id="c" width="297.24" height="179.06" x="7.51" y="84.83" maskUnits="userSpaceOnUse">\n          <path fill="#fff" fill-rule="evenodd" d="M14.65 238.41a13.55 13.55 0 0012.78 23.89l277.32-153.58L292 84.83 14.65 238.41z"/>\n        </mask>\n        <mask id="e" width="38.55" height="24.95" x="12.81" y="234.29" maskUnits="userSpaceOnUse">\n          <path fill="#fff" fill-rule="evenodd" d="M17.69 241.85a9.24 9.24 0 008.73 16.29c4.5-2.41 24.94-23.85 24.94-23.85s-29.17 5.15-33.67 7.56"/>\n        </mask>\n      </defs>\n      <g mask="url(#a)">\n        <path fill="url(#b)" fill-rule="evenodd" d="M11.33 230a21.52 21.52 0 0020.31 38L450 38 429.7 0 11.33 230z"/>\n      </g>\n      <g mask="url(#c)">\n        <path fill="url(#d)" fill-rule="evenodd" d="M14.65 238.41a13.55 13.55 0 0012.78 23.89l277.32-153.58L292 84.83 14.65 238.41z"/>\n      </g>\n      <g mask="url(#e)">\n        <path fill="url(#f)" fill-rule="evenodd" d="M17.69 241.85a9.24 9.24 0 008.73 16.29c4.5-2.41 24.94-23.85 24.94-23.85s-29.17 5.15-33.67 7.56"/>\n      </g>\n    </svg>');
         }
 
         return '\n    <div class="wrapper">\n      '.concat(t, "\n    </div>\n    \n\n    ");
@@ -297,28 +297,28 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
       get: function get() {
         return "\n    .wrapper{\n      width: ".concat(this.attrs.width, "px;\n      height:").concat(this.attrs.height, "px;\n    }\n    .comet-svg{\n      position: absolute;\n      z-index: 3;\n    }\n\n  ");
       }
-    }]), o;
-  }(p.HTMLClip),
+    }]), r;
+  }(f.HTMLClip),
       d = __webpack_require__(444),
       m = __webpack_require__(99),
-      g = d.loadPlugin(m),
-      v = function (e) {
-    s(o, e);
-    var r = l(o);
+      y = d.loadPlugin(m),
+      g = function (e) {
+    a(r, e);
+    var o = p(r);
 
-    function o() {
-      return t(this, o), r.apply(this, arguments);
+    function r() {
+      return t(this, r), o.apply(this, arguments);
     }
 
-    return n(o, [{
+    return n(r, [{
       key: "buildTree",
       value: function value() {
         for (var t = 0; t < this.attrs.items; t++) {
           var e = Math.floor(1e3 * Math.random()),
               n = this.attrs.duration / 2 * ((Math.floor(91 * Math.random()) + 10) / 100),
-              r = new d.Combo({
+              o = new d.Combo({
             incidents: [{
-              incidentClass: g.Anime,
+              incidentClass: y.Anime,
               attrs: {
                 animatedAttrs: {
                   transform: {
@@ -331,7 +331,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
               },
               position: 0
             }, {
-              incidentClass: g.Anime,
+              incidentClass: y.Anime,
               attrs: {
                 animatedAttrs: {
                   transform: {
@@ -348,7 +348,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
             selector: ".stars-svg-".concat(t),
             repeats: this.attrs.repeats
           });
-          this.addIncident(r, e);
+          this.addIncident(o, e);
         }
       }
     }, {
@@ -367,17 +367,17 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
 
         for (var e = 0; e < this.attrs.items; e++) {
           var n = Math.floor(Math.random() * (+this.attrs.starMaxSize + 1 - +this.attrs.starMinSize)) + +this.attrs.starMinSize,
-              r = Math.floor(Math.random() * (this.attrs.height - n)),
-              o = Math.floor(Math.random() * (this.attrs.width - n));
+              o = Math.floor(Math.random() * (this.attrs.height - n)),
+              r = Math.floor(Math.random() * (this.attrs.width - n));
           this.itemData.push({
-            left: o,
-            top: r,
+            left: r,
+            top: o,
             size: n
           }), console.log({
-            left: o,
-            top: r,
+            left: r,
+            top: o,
             size: n
-          }), t += ' \n      <svg class="stars-svg stars-svg-'.concat(e, '" width="').concat(n, 'px" height="').concat(n, 'px" style="left: ').concat(o, "px; top:").concat(r, 'px;" viewBox="0 0 688 686" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">\n      <title>Stars</title>\n      <desc>Created with Sketch.</desc>\n      <defs>\n          <path d="M3224.65766,519.984464 C3304.46737,578.560629 3365.76874,616.01721 3408.56175,632.354208 C3450.04134,648.189779 3525.59175,609.92697 3635.21297,517.565778 L3635.21296,517.565762 C3636.05768,516.854043 3637.31943,516.961863 3638.03115,517.806585 C3638.68359,518.580949 3638.65435,519.720753 3637.96308,520.460656 C3546.86776,617.963954 3507.94937,692.818889 3521.20791,745.02546 C3534.47252,797.255965 3566.34651,853.518628 3616.82986,913.813449 L3616.82984,913.813464 C3617.53893,914.660364 3617.42721,915.921742 3616.58031,916.63083 C3615.84168,917.249269 3614.76713,917.253264 3614.02392,916.640336 C3546.16455,860.676516 3488.08066,830.622825 3439.77225,826.479261 C3391.04101,822.299431 3326.22148,852.13216 3245.31367,915.977449 L3245.31368,915.977464 C3244.44656,916.661717 3243.18893,916.513475 3242.50467,915.646357 C3241.90553,914.887087 3241.93555,913.807867 3242.57598,913.083083 C3308.57713,838.389236 3336.7605,771.964212 3327.1261,713.808009 C3317.34518,654.767408 3282.29516,591.138609 3221.97602,522.92161 L3221.97603,522.921602 C3221.24435,522.094128 3221.32202,520.83019 3222.14949,520.098517 C3222.85456,519.475072 3223.89892,519.427583 3224.65766,519.984464 Z" id="stars-svg-path-1"></path>\n          <filter x="-31.4%" y="-31.9%" width="162.5%" height="165.1%" filterUnits="objectBoundingBox" id="stars-svg-filter-2">\n              <feMorphology radius="0.5" operator="erode" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>\n              <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>\n              <feGaussianBlur stdDeviation="45" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>\n              <feColorMatrix values="').concat(this.attrs.starGlowColor, '" type="matrix" in="shadowBlurOuter1"></feColorMatrix>\n          </filter>\n      </defs>\n      <g id="stars-svg-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\n          <g id="stars-svg-Black-Hole" transform="translate(-3081.000000, -370.000000)">\n              <g id="stars-svg-Stars" transform="translate(3430.796957, 716.499508) rotate(-45.000000) translate(-3430.796957, -716.499508) ">\n                  <use fill="black" fill-opacity="1" filter="url(#stars-svg-filter-2)" xlink:href="#stars-svg-path-1"></use>\n                  <use fill="').concat(this.attrs.starColor, '" fill-rule="evenodd" xlink:href="#stars-svg-path-1"></use>\n              </g>\n          </g>\n      </g>\n  </svg>');
+          }), t += ' \n      <svg class="stars-svg stars-svg-'.concat(e, '" width="').concat(n, 'px" height="').concat(n, 'px" style="left: ').concat(r, "px; top:").concat(o, 'px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50.15">\n<defs>\n  <radialGradient id="radial-gradient" cx="25.98" cy="26.84" r="22.27" gradientUnits="userSpaceOnUse">\n    <stop offset="0" stop-color="#fff9a6" stop-opacity="0.9"/>\n    <stop offset="0.07" stop-color="#fffab3" stop-opacity="0.77"/>\n    <stop offset="0.2" stop-color="#fffbc7" stop-opacity="0.57"/>\n    <stop offset="0.34" stop-color="#fffcd8" stop-opacity="0.4"/>\n    <stop offset="0.47" stop-color="#fffde6" stop-opacity="0.25"/>\n    <stop offset="0.6" stop-color="#fffef1" stop-opacity="0.14"/>\n    <stop offset="0.74" stop-color="#fffff9" stop-opacity="0.06"/>\n    <stop offset="0.87" stop-color="#fffffd" stop-opacity="0.02"/>\n    <stop offset="1" stop-color="#fff" stop-opacity="0"/>\n  </radialGradient>\n</defs>\n<title>Asset 10</title>\n<g id="Layer_2" data-name="Layer 2">\n  <g id="Layer_2-2" data-name="Layer 2">\n    <g>\n      <circle cx="25.98" cy="26.84" r="22.27" fill="url(#radial-gradient)"/>\n      <path id="stars-svg-path-1" d="M.15,26.27q13.13-2,18.73-4.52Q24.31,19.32,26,.16h0A.18.18,0,0,1,26.14,0a.19.19,0,0,1,.17.17q.6,17.88,6.81,21.58t16.72,4.62h0a.18.18,0,0,1,.16.2.19.19,0,0,1-.16.16Q38.1,27.86,33.12,32.05T26.49,50h0a.18.18,0,0,1-.36,0Q25.31,36.65,18.88,32T.17,26.62h0A.17.17,0,0,1,0,26.43.18.18,0,0,1,.15,26.27Z" fill="').concat(this.attrs.starColor, '" fill-rule="evenodd"/>\n    </g>\n  </g>\n</g>\n</svg>');
         }
 
         return '\n    <div class="wrapper">\n      '.concat(t, "\n    </div>\n    \n\n    ");
@@ -387,22 +387,22 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
       get: function get() {
         return "\n    .wrapper{\n      width: ".concat(this.attrs.width, "px;\n      height:").concat(this.attrs.height, "px;\n      \n    }\n    .stars-svg{\n      position: absolute;\n      z-index: 3;\n\n    }\n\n  ");
       }
-    }]), o;
+    }]), r;
   }(d.HTMLClip),
-      y = __webpack_require__(500);
+      b = __webpack_require__(500);
 
   return {
-    npm_name: y.name,
-    version: y.version,
+    npm_name: b.name,
+    version: b.version,
     incidents: [{
-      exportable: f,
+      exportable: h,
       name: "Comets",
       attributesValidationRules: function (t) {
         for (var e = 1; e < arguments.length; e++) {
           var n = null != arguments[e] ? arguments[e] : {};
-          e % 2 ? o(Object(n), !0).forEach(function (e) {
-            r(t, e, n[e]);
-          }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(n)) : o(Object(n)).forEach(function (e) {
+          e % 2 ? r(Object(n), !0).forEach(function (e) {
+            o(t, e, n[e]);
+          }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(n)) : r(Object(n)).forEach(function (e) {
             Object.defineProperty(t, e, Object.getOwnPropertyDescriptor(n, e));
           });
         }
@@ -466,7 +466,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
         }
       })
     }, {
-      exportable: v,
+      exportable: g,
       name: "Stars"
     }]
   };
@@ -1658,7 +1658,7 @@ return Promise$1;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"name\":\"@kissmybutton/motorcortex-comets\",\"version\":\"0.0.5\",\"description\":\"Comets fall plugin \",\"main\":\"dist/motorcortex-comets.cjs.js\",\"module\":\"dist/motorcortex-comets.esm.js\",\"browser\":\"dist/motorcortex-comets.umd.js\",\"author\":\"\",\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/kissmybutton/motorcortex-comets\"},\"license\":\"MIT\",\"engines\":{\"node\":\">=10\"},\"scripts\":{\"concurrently\":\"concurrently -c \\\"cyan.bold,magenta.bold\\\" --names \\\"JS,Styles\\\"\",\"lint:styles\":\"stylelint  --allow-empty-input \\\"src/**.css\\\" \\\"src/**/*.scss\\\" --config .stylelintrc.json\",\"lint:js\":\"eslint -c .eslintrc src/**/*.js\",\"lint\":\"npm run concurrently \\\"npm:lint:js\\\" \\\"npm:lint:styles\\\"\",\"lint:fix\":\"npm run concurrently  \\\"npm:lint:js -- --fix\\\" \\\"npm:lint:styles -- --fix\\\"\",\"build\":\"npm run build:lib && npm run build:demo\",\"build:lib\":\"rollup -c\",\"start\":\"npm run build:lib && concurrently -c \\\"cyan.bold,magenta.bold\\\" \\\"npm:build:lib -- -w\\\"  \\\"npm:start:demo\\\" \",\"start:demo\":\"webpack serve --mode=development --config ./demo/webpack.config.js\",\"build:demo\":\"webpack --mode=production --config ./demo/webpack.config.js\",\"test\":\"HERE GOES YOUR TEST TASK\",\"test:prod\":\"npm run lint\"},\"keywords\":[\"motorcortex\"],\"config\":{\"commitizen\":{\"path\":\"cz-conventional-changelog\"}},\"dependencies\":{\"@kissmybutton/motorcortex-anime\":\"2.1.8\"},\"peerDependencies\":{\"@kissmybutton/motorcortex\":\"6.2.2\"},\"devDependencies\":{\"@babel/cli\":\"7.12.8\",\"@babel/core\":\"7.12.8\",\"@babel/plugin-syntax-jsx\":\"7.12.1\",\"@babel/plugin-transform-react-jsx\":\"7.12.7\",\"@babel/preset-env\":\"7.12.7\",\"@kissmybutton/motorcortex\":\"6.2.2\",\"@kissmybutton/motorcortex-player\":\"1.5.11\",\"babel-eslint\":\"10.1.0\",\"babel-loader\":\"8.2.1\",\"concurrently\":\"5.3.0\",\"css-loader\":\"5.0.1\",\"es6-promise\":\"4.2.8\",\"eslint\":\"7.14.0\",\"eslint-config-prettier\":\"6.15.0\",\"eslint-config-standard\":\"16.0.2\",\"eslint-plugin-babel\":\"5.3.1\",\"eslint-plugin-import\":\"2.22.1\",\"eslint-plugin-node\":\"11.1.0\",\"eslint-plugin-prettier\":\"3.1.4\",\"eslint-plugin-promise\":\"4.2.1\",\"eslint-plugin-standard\":\"4.1.0\",\"exports-loader\":\"1.1.1\",\"imports-loader\":\"1.2.0\",\"npx\":\"10.2.2\",\"prettier\":\"2.2.0\",\"rimraf\":\"3.0.2\",\"rollup\":\"2.33.3\",\"@rollup/plugin-babel\":\"5.2.1\",\"@rollup/plugin-node-resolve\":\"10.0.0\",\"@rollup/plugin-commonjs\":\"16.0.0\",\"shelljs\":\"0.8.4\",\"stylelint\":\"13.8.0\",\"stylelint-config-prettier\":\"8.0.2\",\"stylelint-config-recommended\":\"3.0.0\",\"stylelint-config-recommended-scss\":\"4.2.0\",\"stylelint-config-sass-guidelines\":\"7.1.0\",\"stylelint-config-standard\":\"20.0.0\",\"stylelint-scss\":\"3.18.0\",\"webpack\":\"5.6.0\",\"webpack-cli\":\"4.2.0\",\"webpack-dev-server\":\"3.11.0\",\"whatwg-fetch\":\"3.5.0\"}}");
+module.exports = JSON.parse("{\"name\":\"@kissmybutton/motorcortex-comets\",\"version\":\"0.0.6\",\"description\":\"Comets fall plugin \",\"main\":\"dist/motorcortex-comets.cjs.js\",\"module\":\"dist/motorcortex-comets.esm.js\",\"browser\":\"dist/motorcortex-comets.umd.js\",\"author\":\"\",\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/kissmybutton/motorcortex-comets\"},\"license\":\"MIT\",\"engines\":{\"node\":\">=10\"},\"scripts\":{\"concurrently\":\"concurrently -c \\\"cyan.bold,magenta.bold\\\" --names \\\"JS,Styles\\\"\",\"lint:styles\":\"stylelint  --allow-empty-input \\\"src/**.css\\\" \\\"src/**/*.scss\\\" --config .stylelintrc.json\",\"lint:js\":\"eslint -c .eslintrc src/**/*.js\",\"lint\":\"npm run concurrently \\\"npm:lint:js\\\" \\\"npm:lint:styles\\\"\",\"lint:fix\":\"npm run concurrently  \\\"npm:lint:js -- --fix\\\" \\\"npm:lint:styles -- --fix\\\"\",\"build\":\"npm run build:lib && npm run build:demo\",\"build:lib\":\"rollup -c\",\"start\":\"npm run build:lib && concurrently -c \\\"cyan.bold,magenta.bold\\\" \\\"npm:build:lib -- -w\\\"  \\\"npm:start:demo\\\" \",\"start:demo\":\"webpack serve --mode=development --config ./demo/webpack.config.js\",\"build:demo\":\"webpack --mode=production --config ./demo/webpack.config.js\",\"test\":\"HERE GOES YOUR TEST TASK\",\"test:prod\":\"npm run lint\"},\"keywords\":[\"motorcortex\"],\"config\":{\"commitizen\":{\"path\":\"cz-conventional-changelog\"}},\"dependencies\":{\"@kissmybutton/motorcortex-anime\":\"2.1.8\"},\"peerDependencies\":{\"@kissmybutton/motorcortex\":\"6.2.2\"},\"devDependencies\":{\"@babel/cli\":\"7.12.8\",\"@babel/core\":\"7.12.8\",\"@babel/plugin-syntax-jsx\":\"7.12.1\",\"@babel/plugin-transform-react-jsx\":\"7.12.7\",\"@babel/preset-env\":\"7.12.7\",\"@kissmybutton/motorcortex\":\"6.2.2\",\"@kissmybutton/motorcortex-player\":\"1.5.11\",\"babel-eslint\":\"10.1.0\",\"babel-loader\":\"8.2.1\",\"concurrently\":\"5.3.0\",\"css-loader\":\"5.0.1\",\"es6-promise\":\"4.2.8\",\"eslint\":\"7.14.0\",\"eslint-config-prettier\":\"6.15.0\",\"eslint-config-standard\":\"16.0.2\",\"eslint-plugin-babel\":\"5.3.1\",\"eslint-plugin-import\":\"2.22.1\",\"eslint-plugin-node\":\"11.1.0\",\"eslint-plugin-prettier\":\"3.1.4\",\"eslint-plugin-promise\":\"4.2.1\",\"eslint-plugin-standard\":\"4.1.0\",\"exports-loader\":\"1.1.1\",\"imports-loader\":\"1.2.0\",\"npx\":\"10.2.2\",\"prettier\":\"2.2.0\",\"rimraf\":\"3.0.2\",\"rollup\":\"2.33.3\",\"@rollup/plugin-babel\":\"5.2.1\",\"@rollup/plugin-node-resolve\":\"10.0.0\",\"@rollup/plugin-commonjs\":\"16.0.0\",\"shelljs\":\"0.8.4\",\"stylelint\":\"13.8.0\",\"stylelint-config-prettier\":\"8.0.2\",\"stylelint-config-recommended\":\"3.0.0\",\"stylelint-config-recommended-scss\":\"4.2.0\",\"stylelint-config-sass-guidelines\":\"7.1.0\",\"stylelint-config-standard\":\"20.0.0\",\"stylelint-scss\":\"3.18.0\",\"webpack\":\"5.6.0\",\"webpack-cli\":\"4.2.0\",\"webpack-dev-server\":\"3.11.0\",\"whatwg-fetch\":\"3.5.0\"}}");
 
 /***/ }),
 
@@ -1754,7 +1754,7 @@ module.exports = JSON.parse("{\"name\":\"@kissmybutton/motorcortex-comets\",\"ve
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => "11874fb6300fae5c51e2"
+/******/ 		__webpack_require__.h = () => "e6eaafd6f845e380fc60"
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
