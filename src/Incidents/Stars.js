@@ -52,16 +52,11 @@ export default class Stars extends MotorCortex.HTMLClip {
 </svg>`
       list+=comet
   }
-
-
-  
-
     return `
     <div class="wrapper">
       ${list}
     </div>
     
-
     `;
   }
 
@@ -83,49 +78,93 @@ export default class Stars extends MotorCortex.HTMLClip {
 
   buildTree() {
     
-    for(let i = 0; i < this.attrs.items;i++){
-      const ran = Math.floor(Math.random() * (1000))
-      const duration = (this.attrs.duration/2)*((Math.floor(Math.random() * (100 + 1 - +10)) + +10)/100)
-      const starScale =  new MotorCortex.Combo(
-        {
-          incidents:[
-            {
-              incidentClass: Anime.Anime,
-              attrs:{
-                animatedAttrs: {
-                  transform:{
-                    scale:0
-                  },
-                }    
+    if(this.attrs.blinkType && this.attrs.blinkType === "opacity"){
+      for(let i = 0; i < this.attrs.items;i++){
+        const ran = Math.floor(Math.random() * (1000))
+        const duration = (this.attrs.duration/2)*((Math.floor(Math.random() * (100 + 1 - +10)) + +10)/100)
+        const starScale =  new MotorCortex.Combo(
+          {
+            incidents:[
+              {
+                incidentClass: Anime.Anime,
+                attrs:{
+                  animatedAttrs: {
+                    opacity:0
+                  }    
+                },
+                props:{
+                  duration:duration,
+                },
+                position: 0
               },
-              props:{
-                duration:duration,
+              {
+                incidentClass: Anime.Anime,
+                attrs:{
+                  animatedAttrs: {
+                    opacity:1
+                  }
+                },
+                props:{
+                  duration:duration,
+                  
+                },
+                position:duration+ran
+              }
+            ]
+          },
+          {
+            selector: `.stars-svg-${i}`,
+            repeats:this.attrs.repeats
+          }
+        )
+        this.addIncident(starScale,ran)
+      }
+
+    }else{
+      for(let i = 0; i < this.attrs.items;i++){
+        const ran = Math.floor(Math.random() * (1000))
+        const duration = (this.attrs.duration/2)*((Math.floor(Math.random() * (100 + 1 - +10)) + +10)/100)
+        const starScale =  new MotorCortex.Combo(
+          {
+            incidents:[
+              {
+                incidentClass: Anime.Anime,
+                attrs:{
+                  animatedAttrs: {
+                    transform:{
+                      scale:0
+                    },
+                  }    
+                },
+                props:{
+                  duration:duration,
+                },
+                position: 0
               },
-              position: 0
-            },
-            {
-              incidentClass: Anime.Anime,
-              attrs:{
-                animatedAttrs: {
-                  transform:{
-                    scale:1
-                  },
-                }
-              },
-              props:{
-                duration:duration,
-                
-              },
-              position:duration+ran
-            }
-          ]
-        },
-        {
-          selector: `.stars-svg-${i}`,
-          repeats:this.attrs.repeats
-        }
-      )
-      this.addIncident(starScale,ran)
+              {
+                incidentClass: Anime.Anime,
+                attrs:{
+                  animatedAttrs: {
+                    transform:{
+                      scale:1
+                    },
+                  }
+                },
+                props:{
+                  duration:duration,
+                  
+                },
+                position:duration+ran
+              }
+            ]
+          },
+          {
+            selector: `.stars-svg-${i}`,
+            repeats:this.attrs.repeats
+          }
+        )
+        this.addIncident(starScale,ran)
+      }
     }
 
   }

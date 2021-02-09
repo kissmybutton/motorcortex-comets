@@ -1,6 +1,6 @@
 {
   "name": "@kissmybutton/motorcortex-comets",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Comets fall plugin ",
   "main": "dist/motorcortex-comets.cjs.js",
   "module": "dist/motorcortex-comets.esm.js",

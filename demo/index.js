@@ -65,7 +65,8 @@ const stars = new MyPlugin.Stars({
     starGlowColor:"0 0 0 0 0.950946003   0 0 0 0 0.81265567   0 0 0 0 0.51528336  0 0 0 1 0",
     items: 15,
     repeats:5,
-    duration:8000
+    duration:8000,
+    blinkType: "opacity",
 }, {
     selector: '.comet2',
 });

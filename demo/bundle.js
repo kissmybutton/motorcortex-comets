@@ -110,7 +110,8 @@ var stars = new MyPlugin.Stars({
   starGlowColor: "0 0 0 0 0.950946003   0 0 0 0 0.81265567   0 0 0 0 0.51528336  0 0 0 1 0",
   items: 15,
   repeats: 5,
-  duration: 8000
+  duration: 8000,
+  blinkType: "opacity"
 }, {
   selector: '.comet2'
 });
@@ -313,7 +314,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
     return n(r, [{
       key: "buildTree",
       value: function value() {
-        for (var t = 0; t < this.attrs.items; t++) {
+        if (this.attrs.blinkType && "opacity" === this.attrs.blinkType) for (var t = 0; t < this.attrs.items; t++) {
           var e = Math.floor(1e3 * Math.random()),
               n = this.attrs.duration / 2 * ((Math.floor(91 * Math.random()) + 10) / 100),
               o = new d.Combo({
@@ -321,9 +322,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
               incidentClass: y.Anime,
               attrs: {
                 animatedAttrs: {
-                  transform: {
-                    scale: 0
-                  }
+                  opacity: 0
                 }
               },
               props: {
@@ -334,9 +333,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
               incidentClass: y.Anime,
               attrs: {
                 animatedAttrs: {
-                  transform: {
-                    scale: 1
-                  }
+                  opacity: 1
                 }
               },
               props: {
@@ -349,6 +346,42 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
             repeats: this.attrs.repeats
           });
           this.addIncident(o, e);
+        } else for (var r = 0; r < this.attrs.items; r++) {
+          var a = Math.floor(1e3 * Math.random()),
+              i = this.attrs.duration / 2 * ((Math.floor(91 * Math.random()) + 10) / 100),
+              s = new d.Combo({
+            incidents: [{
+              incidentClass: y.Anime,
+              attrs: {
+                animatedAttrs: {
+                  transform: {
+                    scale: 0
+                  }
+                }
+              },
+              props: {
+                duration: i
+              },
+              position: 0
+            }, {
+              incidentClass: y.Anime,
+              attrs: {
+                animatedAttrs: {
+                  transform: {
+                    scale: 1
+                  }
+                }
+              },
+              props: {
+                duration: i
+              },
+              position: i + a
+            }]
+          }, {
+            selector: ".stars-svg-".concat(r),
+            repeats: this.attrs.repeats
+          });
+          this.addIncident(s, a);
         }
       }
     }, {
@@ -380,7 +413,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
           }), t += ' \n      <svg class="stars-svg stars-svg-'.concat(e, '" width="').concat(n, 'px" height="').concat(n, 'px" style="left: ').concat(r, "px; top:").concat(o, 'px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50.15">\n<defs>\n  <radialGradient id="radial-gradient" cx="25.98" cy="26.84" r="22.27" gradientUnits="userSpaceOnUse">\n    <stop offset="0" stop-color="#fff9a6" stop-opacity="0.9"/>\n    <stop offset="0.07" stop-color="#fffab3" stop-opacity="0.77"/>\n    <stop offset="0.2" stop-color="#fffbc7" stop-opacity="0.57"/>\n    <stop offset="0.34" stop-color="#fffcd8" stop-opacity="0.4"/>\n    <stop offset="0.47" stop-color="#fffde6" stop-opacity="0.25"/>\n    <stop offset="0.6" stop-color="#fffef1" stop-opacity="0.14"/>\n    <stop offset="0.74" stop-color="#fffff9" stop-opacity="0.06"/>\n    <stop offset="0.87" stop-color="#fffffd" stop-opacity="0.02"/>\n    <stop offset="1" stop-color="#fff" stop-opacity="0"/>\n  </radialGradient>\n</defs>\n<title>Asset 10</title>\n<g id="Layer_2" data-name="Layer 2">\n  <g id="Layer_2-2" data-name="Layer 2">\n    <g>\n      <circle cx="25.98" cy="26.84" r="22.27" fill="url(#radial-gradient)"/>\n      <path id="stars-svg-path-1" d="M.15,26.27q13.13-2,18.73-4.52Q24.31,19.32,26,.16h0A.18.18,0,0,1,26.14,0a.19.19,0,0,1,.17.17q.6,17.88,6.81,21.58t16.72,4.62h0a.18.18,0,0,1,.16.2.19.19,0,0,1-.16.16Q38.1,27.86,33.12,32.05T26.49,50h0a.18.18,0,0,1-.36,0Q25.31,36.65,18.88,32T.17,26.62h0A.17.17,0,0,1,0,26.43.18.18,0,0,1,.15,26.27Z" fill="').concat(this.attrs.starColor, '" fill-rule="evenodd"/>\n    </g>\n  </g>\n</g>\n</svg>');
         }
 
-        return '\n    <div class="wrapper">\n      '.concat(t, "\n    </div>\n    \n\n    ");
+        return '\n    <div class="wrapper">\n      '.concat(t, "\n    </div>\n    \n    ");
       }
     }, {
       key: "css",
@@ -1658,7 +1691,7 @@ return Promise$1;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"name\":\"@kissmybutton/motorcortex-comets\",\"version\":\"0.0.6\",\"description\":\"Comets fall plugin \",\"main\":\"dist/motorcortex-comets.cjs.js\",\"module\":\"dist/motorcortex-comets.esm.js\",\"browser\":\"dist/motorcortex-comets.umd.js\",\"author\":\"\",\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/kissmybutton/motorcortex-comets\"},\"license\":\"MIT\",\"engines\":{\"node\":\">=10\"},\"scripts\":{\"concurrently\":\"concurrently -c \\\"cyan.bold,magenta.bold\\\" --names \\\"JS,Styles\\\"\",\"lint:styles\":\"stylelint  --allow-empty-input \\\"src/**.css\\\" \\\"src/**/*.scss\\\" --config .stylelintrc.json\",\"lint:js\":\"eslint -c .eslintrc src/**/*.js\",\"lint\":\"npm run concurrently \\\"npm:lint:js\\\" \\\"npm:lint:styles\\\"\",\"lint:fix\":\"npm run concurrently  \\\"npm:lint:js -- --fix\\\" \\\"npm:lint:styles -- --fix\\\"\",\"build\":\"npm run build:lib && npm run build:demo\",\"build:lib\":\"rollup -c\",\"start\":\"npm run build:lib && concurrently -c \\\"cyan.bold,magenta.bold\\\" \\\"npm:build:lib -- -w\\\"  \\\"npm:start:demo\\\" \",\"start:demo\":\"webpack serve --mode=development --config ./demo/webpack.config.js\",\"build:demo\":\"webpack --mode=production --config ./demo/webpack.config.js\",\"test\":\"HERE GOES YOUR TEST TASK\",\"test:prod\":\"npm run lint\"},\"keywords\":[\"motorcortex\"],\"config\":{\"commitizen\":{\"path\":\"cz-conventional-changelog\"}},\"dependencies\":{\"@kissmybutton/motorcortex-anime\":\"2.1.8\"},\"peerDependencies\":{\"@kissmybutton/motorcortex\":\"6.2.2\"},\"devDependencies\":{\"@babel/cli\":\"7.12.8\",\"@babel/core\":\"7.12.8\",\"@babel/plugin-syntax-jsx\":\"7.12.1\",\"@babel/plugin-transform-react-jsx\":\"7.12.7\",\"@babel/preset-env\":\"7.12.7\",\"@kissmybutton/motorcortex\":\"6.2.2\",\"@kissmybutton/motorcortex-player\":\"1.5.11\",\"babel-eslint\":\"10.1.0\",\"babel-loader\":\"8.2.1\",\"concurrently\":\"5.3.0\",\"css-loader\":\"5.0.1\",\"es6-promise\":\"4.2.8\",\"eslint\":\"7.14.0\",\"eslint-config-prettier\":\"6.15.0\",\"eslint-config-standard\":\"16.0.2\",\"eslint-plugin-babel\":\"5.3.1\",\"eslint-plugin-import\":\"2.22.1\",\"eslint-plugin-node\":\"11.1.0\",\"eslint-plugin-prettier\":\"3.1.4\",\"eslint-plugin-promise\":\"4.2.1\",\"eslint-plugin-standard\":\"4.1.0\",\"exports-loader\":\"1.1.1\",\"imports-loader\":\"1.2.0\",\"npx\":\"10.2.2\",\"prettier\":\"2.2.0\",\"rimraf\":\"3.0.2\",\"rollup\":\"2.33.3\",\"@rollup/plugin-babel\":\"5.2.1\",\"@rollup/plugin-node-resolve\":\"10.0.0\",\"@rollup/plugin-commonjs\":\"16.0.0\",\"shelljs\":\"0.8.4\",\"stylelint\":\"13.8.0\",\"stylelint-config-prettier\":\"8.0.2\",\"stylelint-config-recommended\":\"3.0.0\",\"stylelint-config-recommended-scss\":\"4.2.0\",\"stylelint-config-sass-guidelines\":\"7.1.0\",\"stylelint-config-standard\":\"20.0.0\",\"stylelint-scss\":\"3.18.0\",\"webpack\":\"5.6.0\",\"webpack-cli\":\"4.2.0\",\"webpack-dev-server\":\"3.11.0\",\"whatwg-fetch\":\"3.5.0\"}}");
+module.exports = JSON.parse("{\"name\":\"@kissmybutton/motorcortex-comets\",\"version\":\"0.0.7\",\"description\":\"Comets fall plugin \",\"main\":\"dist/motorcortex-comets.cjs.js\",\"module\":\"dist/motorcortex-comets.esm.js\",\"browser\":\"dist/motorcortex-comets.umd.js\",\"author\":\"\",\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/kissmybutton/motorcortex-comets\"},\"license\":\"MIT\",\"engines\":{\"node\":\">=10\"},\"scripts\":{\"concurrently\":\"concurrently -c \\\"cyan.bold,magenta.bold\\\" --names \\\"JS,Styles\\\"\",\"lint:styles\":\"stylelint  --allow-empty-input \\\"src/**.css\\\" \\\"src/**/*.scss\\\" --config .stylelintrc.json\",\"lint:js\":\"eslint -c .eslintrc src/**/*.js\",\"lint\":\"npm run concurrently \\\"npm:lint:js\\\" \\\"npm:lint:styles\\\"\",\"lint:fix\":\"npm run concurrently  \\\"npm:lint:js -- --fix\\\" \\\"npm:lint:styles -- --fix\\\"\",\"build\":\"npm run build:lib && npm run build:demo\",\"build:lib\":\"rollup -c\",\"start\":\"npm run build:lib && concurrently -c \\\"cyan.bold,magenta.bold\\\" \\\"npm:build:lib -- -w\\\"  \\\"npm:start:demo\\\" \",\"start:demo\":\"webpack serve --mode=development --config ./demo/webpack.config.js\",\"build:demo\":\"webpack --mode=production --config ./demo/webpack.config.js\",\"test\":\"HERE GOES YOUR TEST TASK\",\"test:prod\":\"npm run lint\"},\"keywords\":[\"motorcortex\"],\"config\":{\"commitizen\":{\"path\":\"cz-conventional-changelog\"}},\"dependencies\":{\"@kissmybutton/motorcortex-anime\":\"2.1.8\"},\"peerDependencies\":{\"@kissmybutton/motorcortex\":\"6.2.2\"},\"devDependencies\":{\"@babel/cli\":\"7.12.8\",\"@babel/core\":\"7.12.8\",\"@babel/plugin-syntax-jsx\":\"7.12.1\",\"@babel/plugin-transform-react-jsx\":\"7.12.7\",\"@babel/preset-env\":\"7.12.7\",\"@kissmybutton/motorcortex\":\"6.2.2\",\"@kissmybutton/motorcortex-player\":\"1.5.11\",\"babel-eslint\":\"10.1.0\",\"babel-loader\":\"8.2.1\",\"concurrently\":\"5.3.0\",\"css-loader\":\"5.0.1\",\"es6-promise\":\"4.2.8\",\"eslint\":\"7.14.0\",\"eslint-config-prettier\":\"6.15.0\",\"eslint-config-standard\":\"16.0.2\",\"eslint-plugin-babel\":\"5.3.1\",\"eslint-plugin-import\":\"2.22.1\",\"eslint-plugin-node\":\"11.1.0\",\"eslint-plugin-prettier\":\"3.1.4\",\"eslint-plugin-promise\":\"4.2.1\",\"eslint-plugin-standard\":\"4.1.0\",\"exports-loader\":\"1.1.1\",\"imports-loader\":\"1.2.0\",\"npx\":\"10.2.2\",\"prettier\":\"2.2.0\",\"rimraf\":\"3.0.2\",\"rollup\":\"2.33.3\",\"@rollup/plugin-babel\":\"5.2.1\",\"@rollup/plugin-node-resolve\":\"10.0.0\",\"@rollup/plugin-commonjs\":\"16.0.0\",\"shelljs\":\"0.8.4\",\"stylelint\":\"13.8.0\",\"stylelint-config-prettier\":\"8.0.2\",\"stylelint-config-recommended\":\"3.0.0\",\"stylelint-config-recommended-scss\":\"4.2.0\",\"stylelint-config-sass-guidelines\":\"7.1.0\",\"stylelint-config-standard\":\"20.0.0\",\"stylelint-scss\":\"3.18.0\",\"webpack\":\"5.6.0\",\"webpack-cli\":\"4.2.0\",\"webpack-dev-server\":\"3.11.0\",\"whatwg-fetch\":\"3.5.0\"}}");
 
 /***/ }),
 
@@ -1754,7 +1787,7 @@ module.exports = JSON.parse("{\"name\":\"@kissmybutton/motorcortex-comets\",\"ve
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => "e6eaafd6f845e380fc60"
+/******/ 		__webpack_require__.h = () => "26e9c60302720211e952"
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
