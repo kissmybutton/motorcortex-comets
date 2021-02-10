@@ -5,11 +5,11 @@ import {
 cometValidationRules
 } from "./validation";
 
-const pkg = require("../package.json");
+import {name,version}  from '../package.json'
 
 export default {
-  npm_name: pkg.name,
-  version: pkg.version, // !! make sure the name of your plugin is identical to the name of your package.json !!
+  npm_name: name,
+  version: version, // !! make sure the name of your plugin is identical to the name of your package.json !!
   incidents: [
     {
       exportable: Comets,
