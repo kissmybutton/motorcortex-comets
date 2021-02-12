@@ -3,35 +3,23 @@ const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 
 export default class Comets extends MotorCortex.HTMLClip {
-  get font() {
-    return [
-      {
-        type: `google-font`,
-        src: `https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,500;0,800;1,700;1,800;1,900&display=swap`
-      }
-    ];
-  }
-
+  
   get html() {
-
-    
-    //  width: ${a}px;
-    //   height: ${b}px;
     let list =[]
     this.itemData= []
     for(let i = 0; i < this.attrs.items;i++){
-      const size = (Math.floor(Math.random() * (+this.attrs.cometMaxSize + 1 - +this.attrs.cometMinSize)) + +this.attrs.cometMinSize)
+      const size = (Math.trunc(Math.random() * (this.attrs.cometMaxSize + 1 - this.attrs.cometMinSize)) +this.attrs.cometMinSize)
       const A = 59*Math.PI/180;
       const B = 31*Math.PI/180;
       const C = 90*Math.PI/180;
       
       const c = size; 
-      const a = (c * Math.sin(A))/Math.sin(C);
-      const b = (c * Math.sin(B))/Math.sin(C);
-      const left= (Math.floor(Math.random() * (+this.attrs.width+a + 1 - +0)) + +0)
-      this.itemData.push({left,top:-b,width:a,size})
+      const width = (c * Math.sin(A))/Math.sin(C);
+      const top = (c * Math.sin(B))/Math.sin(C);
+      const left= (Math.trunc(Math.random() * (+this.attrs.width + width + 1 - + 0)) + 0)
+      this.itemData.push({left, top: -top, width: width, size})
       const comet =` 
-      <svg class="comet-svg comet-svg-${i}" style="left: ${left}px; top: -${b}px; width: ${a}px; height: ${b}px;" xmlns="http://www.w3.org/2000/svg" class="comet-green-svg" data-name="Layer 1" viewBox="0 0 450 270.44">
+      <svg class="comet-svg comet-svg-${i}" style="left: ${left}px; top: -${top}px; width: ${width}px; height: ${top}px;" xmlns="http://www.w3.org/2000/svg" class="comet-green-svg" data-name="Layer 1" viewBox="0 0 450 270.44">
       <defs>
         <linearGradient id="b" x1="-56.99" x2="-56.74" y1="394.68" y2="394.93" gradientTransform="matrix(1363.47 0 0 -819.42 77776.05 323638.12)" gradientUnits="userSpaceOnUse">
           <stop offset="0" stop-color="${this.attrs.auraOuter[0]}" stop-opacity=".59"/>
@@ -90,31 +78,137 @@ export default class Comets extends MotorCortex.HTMLClip {
       position: absolute;
       z-index: 3;
     }
-
   `;
   }
 
   buildTree() {
-    
+    // Speed and Duration, and Sectioning MAXIMUM CONTROL
+    const sectionDensity = 2;
+    const sectionNum = Math.ceil(this.attrs.items * (1 / sectionDensity));
+    this.sectionParams = {};
 
-    for(let i = 0; i < this.attrs.items;i++){
-      // console.log(Math.tan(angle)*(-this.itemData[i].width -this.itemData[i].left)+ this.itemData[i].top)
-      const angle = -29*Math.PI/180;
-      const moveMagentComet = new Anime.Anime(
-        {
-          animatedAttrs: {
-            left:`-${this.itemData[i].width}px`,
-            top: `${Math.tan(angle)*(-this.itemData[i].width -this.itemData[i].left)+ this.itemData[i].top}px`
-          },
-        },
-        {
-          selector: `.comet-svg-${i}`,
-          duration: Math.floor(this.attrs.duration*(1-(this.itemData[i].size)/this.attrs.cometMaxSize)),
-          repeats:this.attrs.repeats 
+    // Angle of drop
+    const angle = -29 * Math.PI / 180;
+
+    // Section data generation
+    for (let s = 0; s < sectionNum; s++) {
+      let sectionComets = [];
+
+      for (let c = 0; c < sectionDensity; c++) {
+        let index = (s * sectionDensity) + c;
+
+        if (this.itemData[index]) {
+          this.itemData[index].i = index;
+          this.itemData[index].durationRate = this.getCometDurFactor(this.itemData[index].size);
+          this.itemData[index].positionRate = Math.random();
+          sectionComets.push((this.itemData[index]));
         }
-      );
-      this.addIncident(moveMagentComet,0);
+      }
+      
+      this.sectionParams[`section${s}`] = {
+        index: s, 
+        divComets: sectionComets,
+      }
     }
+
+    // Calibration and Incident expansion to trim empty timeSection
+    let maxExtension = 0;
+    for (let section in this.sectionParams) {
+      for (let comet of this.sectionParams[section].divComets) {
+        let endpoint = comet.positionRate + this.sectionParams[section].index + comet.durationRate;
+        let extension = endpoint - sectionNum; 
+        maxExtension = (maxExtension < extension) ? extension : maxExtension;
+      }
+    }
+    
+    const bufferDur = maxExtension * this.attrs.duration;
+    const sectionFullDur = this.attrs.duration - bufferDur;
+    const sectionDur = sectionFullDur / sectionNum;
+
+    console.log("CALIBRATED NUMBERS DURATIONS")
+    console.log("Section Num: ", sectionNum)
+    console.log("BufferDur: ", bufferDur)
+    console.log("SectionDur: ", sectionDur)
+    console.log("SectionFullDUr: ", sectionFullDur)
+    console.log("Duration: ", this.attrs.duration)
+    console.log("Calculated Duration: ", sectionDur * sectionNum + bufferDur)
+
+    // Section Combo generation
+    let sectionGroup = new MotorCortex.Group({name: "sectionGroup"});
+
+    for (let section in this.sectionParams) {
+      let sectionIncidents = [];
+      for (let comet of this.sectionParams[section].divComets) {
+        sectionIncidents.push(
+          {
+            incidentClass: Anime.Anime,
+            attrs: {
+              animatedAttrs: {
+                left:`-${comet.width}px`,
+                top: `${Math.tan(angle) * (-1 * (comet.width + comet.left)) + comet.top}px`
+              }
+            },
+            props: {
+              selector: `.comet-svg-${comet.i}`,
+              duration: Math.trunc(100),
+              duration: Math.trunc(comet.durationRate * sectionFullDur),
+            },
+            position: Math.trunc(comet.positionRate * sectionDur),
+          }
+        );
+        
+        console.log(`COMET ${comet.i} | ${section} POSITION RATE: ${comet.positionRate}`);
+        console.log(`COMET ${comet.i} | ${section} DURATION RATE: ${comet.durationRate}`);
+        console.log(`COMET ${comet.i} | ${section} ACTUAL DURATION: ${comet.durationRate * sectionFullDur}`);
+      }
+      console.log(sectionIncidents)
+      let sectionCombo = new MotorCortex.Combo(
+        { incidents: sectionIncidents },
+        { selector: ".wrapper" }
+      );
+      sectionGroup.addIncident(
+        sectionCombo, 
+        Math.trunc(this.sectionParams[section].index * sectionDur)
+      );
+    }
+
+
+    //!!! THIS STATEMENT PRODUCES THE MC ERROR
+    // console.log(sectionGroup.resize(this.attrs.duration));
+    
+    this.addIncident(sectionGroup, 0);
+
+    //!!! THIS STATEMENT PRODUCES THE RUNTIME ERROR
+    // console.log(sectionGroup.resize(this.attrs.duration));
+
+
+
+    // Duration control for FULL DURATION
+    // this.addIncident(
+    //   new Anime.Anime(
+    //     { animatedAttrs: {} },
+    //     {
+    //       selector: `.wrapper`,
+    //       duration: this.attrs.duration
+    //     }
+    //   ),
+    //   0
+    // );
+  }
+
+  getCometDurFactor(cometSize) {
+    // FUNCTION INPUT: DURATION AND SPEED
+    let baseDuration = 1 - this.attrs.speed; 
+    // CALCULATE SIZE FACTOR
+    let sizeFactor = 0.2 + (1 - (cometSize / this.attrs.cometMaxSize)); 
+    // FACTOR SIZE OF COMET IN DURATION
+    let sizedDuration = baseDuration * sizeFactor; 
+
+    return sizedDuration;
+
+
+    // // console.log((0.4 + 0.6 * (1 - (cometSize / this.attrs.cometMaxSize))) * (1 - this.attrs.speed))
+    // return (0.4 + 0.6 * (1 - (cometSize / this.attrs.cometMaxSize))) * (1 - this.attrs.speed);
   }
 }
 

@@ -31,7 +31,7 @@ exports.cometValidationRules = {
       }
     },
     items:{ optional: false, type: "number" },
-    repeats:{ optional: false, type: "number" },
+    // repeats:{ optional: false, type: "number" },
     duration:{ optional: false, type: "number" }
   };
 
