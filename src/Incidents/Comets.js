@@ -205,10 +205,6 @@ export default class Comets extends MotorCortex.HTMLClip {
     let sizedDuration = baseDuration * sizeFactor; 
 
     return sizedDuration;
-
-
-    // // console.log((0.4 + 0.6 * (1 - (cometSize / this.attrs.cometMaxSize))) * (1 - this.attrs.speed))
-    // return (0.4 + 0.6 * (1 - (cometSize / this.attrs.cometMaxSize))) * (1 - this.attrs.speed);
   }
 }
 
