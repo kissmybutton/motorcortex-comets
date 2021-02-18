@@ -29,6 +29,7 @@ function _addDimension(params, points) {
     if(points !== null){
         points = _shuffle(points);
     } else{
+        points = [];
         for(let i=0; i<params.numberOfElements; i++){
             points.push([]);
         }
@@ -36,7 +37,7 @@ function _addDimension(params, points) {
     
     const lastRowElements = params.numberOfElements % params.divisions;
     const fullRows = (params.numberOfElements - lastRowElements) / params.divisions;
-    const step = params.to - params.from / divisions;
+    const step = (params.to - params.from) / params.divisions;
 
     const divisionsByElement = [];
     for (let row = 0; row < fullRows; row++) {
