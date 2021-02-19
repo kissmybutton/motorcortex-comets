@@ -1,3 +1,5 @@
+const defaultDivisions = 4;
+
 function _shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -81,10 +83,13 @@ params: {
 }
 */
 export function spatial(params) {
+    if(!params.divisions){
+        params.divisions = [];
+    }
     let points = null;
     for (let i = 0; i < params.dimensions.length; i++) {
         const limits = params.dimensions[i];
-        const divisions = params.divisions[i] || 4;
+        const divisions = params.divisions[i] || defaultDivisions;
         points = _addDimension(
             {
                 from: limits[0],
@@ -98,6 +103,26 @@ export function spatial(params) {
     return points;
 }
 
+/*
+params: {
+    duration: <integer>,
+    divisions: <integer>, 
+    nunmberOfElements: <integer>,
+    maxDuration: <float from 0 to 1>, // default: 0.5
+    minDuration: <float from 0 to 1> // default: 0.1
+}
+*/
 export function timely(params) {
+    // first we spread the starting point of our elements
+    let startAndDuration = _addDimension(
+        {
+            numberOfElements: params.numberOfElements,
+            from: 0,
+            to: params.duration,
+            divisions: params.divisions || defaultDivisions
+        }
+        , null
+    );
+    
 
 }
