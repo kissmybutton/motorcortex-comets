@@ -63,8 +63,8 @@ const stars = new MyPlugin.Stars({
     starMinSize:15, 
     starColor: "#F0F0F0",
     starGlowColor:"0 0 0 0 0.950946003   0 0 0 0 0.81265567   0 0 0 0 0.51528336  0 0 0 1 0",
-    items: 15,
-    repeats:5,
+    items: 30,
+    repeats:2,
     duration:8000,
     blinkType: "opacity",
 }, {
@@ -72,8 +72,8 @@ const stars = new MyPlugin.Stars({
 });
 
 
-clip.addIncident(comet, 0);
-clip.addIncident(cometMagenta, 0);
+// clip.addIncident(comet, 0);
+// clip.addIncident(cometMagenta, 0);
 clip.addIncident(stars,0)   
 
 const player = new Player({clip});
