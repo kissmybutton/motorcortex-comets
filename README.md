@@ -1,4 +1,4 @@
-# motorcortex-banners
+# motorcortex-comets
 
 ## Demo
 [Check it out here](https://kissmybutton.github.io/motorcortex-comets/demo/index.html)
