@@ -1,27 +1,53 @@
-const MotorCortex = require("@kissmybutton/motorcortex");
-const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
-const Anime = MotorCortex.loadPlugin(AnimeDefinition);
+import { HTMLClip, loadPlugin } from "@kissmybutton/motorcortex";
+import AnimeDefinition from "@kissmybutton/motorcortex-anime";
+const Anime = loadPlugin(AnimeDefinition);
+import { _addDimension, timely } from "../helpers/randomizer";
+const closeAngle = 29;
 
-export default class Comets extends MotorCortex.HTMLClip {
-    get html() {
+export default class Comets extends HTMLClip {
+  get html() {
+    // first get the time (position / duration) random numbers
+    this.comets = timely({
+      duration: this.attrs.duration / this.attrs.repeats,
+      numberOfElements: this.attrs.items,
+      minDuration: 0.1,
+      maxDuration: 0.9,
+    });
+    // console.log(JSON.parse(JSON.stringify(this.comets)));
+    // secondly depending on the duration set size
+    for (let i = 0; i < this.comets.length; i++) {
+      const comet = this.comets[i];
+      const fraction = comet[0] / (this.attrs.duration / this.attrs.repeats);
+      const size =
+        (this.attrs.cometMaxSize - this.attrs.cometMinSize) * (1 - fraction) +
+        this.attrs.cometMinSize;
+      comet.push(size); // now each row has the form [duration, position, size]
+    }
+    // finally we add the position random dimension. Comets can start from anyplace that will allow them to be
+    // visible in our Clip even a little and even in only part of their path
+    const angle = ((90 - closeAngle) * Math.PI) / 180;
+    const extraWidth = this.attrs.height * Math.tan(angle);
+    this.comets = _addDimension(
+      {
+        from: 0,
+        to: this.attrs.width + extraWidth,
+        numberOfElements: this.attrs.items,
+      },
+      this.comets
+    ); // now each row has the form [duration, position, size, left]
+    // console.log(this.comets);
 
-
-        //  width: ${a}px;
-        //   height: ${b}px;
-        let list = []
-        this.itemData = []
-        for (let i = 0; i < this.attrs.items; i++) {
-            const size = (Math.floor(Math.random() * (+this.attrs.cometMaxSize + 1 - +this.attrs.cometMinSize)) + +this.attrs.cometMinSize)
-            const A = 59 * Math.PI / 180;
-            const B = 31 * Math.PI / 180;
-            const C = 90 * Math.PI / 180;
-
-            const c = size;
-            const a = (c * Math.sin(A)) / Math.sin(C);
-            const b = (c * Math.sin(B)) / Math.sin(C);
-            const left = (Math.floor(Math.random() * (+this.attrs.width + a + 1 - +0)) + +0)
-            this.itemData.push({ left, top: -b, width: a, size })
-            const comet = ` 
+    let list = [];
+    this.itemData = [];
+    const A = ((90 - closeAngle) * Math.PI) / 180; // the big angle
+    const B = (closeAngle * Math.PI) / 180; // the close angle
+    for (let i = 0; i < this.attrs.items; i++) {
+      const size = this.comets[i][2];
+      const a = size * Math.sin(B); // the horizontal size of the comet box
+      const b = size * Math.sin(A); // the vertical size of the comet box
+      const left = this.comets[i][3];
+      this.itemData.push({ left, top: -b, width: a, size });
+      const comet = ` 
                 <svg class="comet-svg comet-svg-${i}" style="left: ${left}px; top: -${b}px; width: ${a}px; height: ${b}px;" xmlns="http://www.w3.org/2000/svg" class="comet-green-svg" data-name="Layer 1" viewBox="0 0 450 270.44">
                 <defs>
                     <linearGradient id="b" x1="-56.99" x2="-56.74" y1="394.68" y2="394.93" gradientTransform="matrix(1363.47 0 0 -819.42 77776.05 323638.12)" gradientUnits="userSpaceOnUse">
@@ -59,19 +85,18 @@ export default class Comets extends MotorCortex.HTMLClip {
                 </svg>
             `;
 
-            list += comet
-        }
+      list += comet;
+    }
 
-
-        return `
+    return `
             <div class="wrapper">
             ${list}
             </div>
         `;
-    }
+  }
 
-    get css() {
-        return `
+  get css() {
+    return `
             .wrapper{
                 width: ${this.attrs.width}px;
                 height:${this.attrs.height}px;
@@ -81,30 +106,31 @@ export default class Comets extends MotorCortex.HTMLClip {
                 z-index: 3;
             }
         `;
-    }
+  }
 
-    buildTree() {
-
-
-        for (let i = 0; i < this.attrs.items; i++) {
-            // console.log(Math.tan(angle)*(-this.itemData[i].width -this.itemData[i].left)+ this.itemData[i].top)
-            const angle = -29 * Math.PI / 180;
-            const moveMagentComet = new Anime.Anime(
-                {
-                    animatedAttrs: {
-                        left: `-${this.itemData[i].width}px`,
-                        top: `${Math.tan(angle) * (-this.itemData[i].width - this.itemData[i].left) + this.itemData[i].top}px`
-                    },
-                },
-                {
-                    selector: `.comet-svg-${i}`,
-                    duration: Math.floor(this.attrs.duration * (1 - (this.itemData[i].size) / this.attrs.cometMaxSize)),
-                    repeats: this.attrs.repeats
-                }
-            );
-            this.addIncident(moveMagentComet, 0);
+  buildTree() {
+    for (let i = 0; i < this.comets.length; i++) {
+      // console.log(Math.tan(angle)*(-this.itemData[i].width -this.itemData[i].left)+ this.itemData[i].top)
+      const angle = (-closeAngle * Math.PI) / 180;
+      const moveMagentComet = new Anime.Anime(
+        {
+          animatedAttrs: {
+            left: `-${this.itemData[i].width}px`,
+            top: `${
+              Math.tan(angle) *
+                (-this.itemData[i].width - this.itemData[i].left) +
+              this.itemData[i].top
+            }px`,
+          },
+        },
+        {
+          selector: `.comet-svg-${i}`,
+          duration: this.comets[i][0],
+          delay: this.comets[i][1],
+          repeats: this.attrs.repeats,
         }
+      );
+      console.log(this.addIncident(moveMagentComet, 0));
     }
+  }
 }
-
-

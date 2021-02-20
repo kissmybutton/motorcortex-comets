@@ -1,5 +1,6 @@
 const defaultDivisions = 4;
 const maxDurationDefault = 0.6;
+const minDurationDefault = 0.2;
 
 function _shuffle(array) {
   var currentIndex = array.length,
@@ -29,22 +30,22 @@ params: {
     divisions
 }
 */
-function _addDimension(params, points) {
+export function _addDimension(params, points) {
   if (points === null) {
     points = [];
     for (let i = 0; i < params.numberOfElements; i++) {
       points.push([]);
     }
   }
-
-  const lastRowElements = params.numberOfElements % params.divisions;
+  const divisions = params.divisions || defaultDivisions;
+  const lastRowElements = params.numberOfElements % divisions;
   const fullRows =
-    (params.numberOfElements - lastRowElements) / params.divisions;
-  const step = (params.to - params.from) / params.divisions;
+    (params.numberOfElements - lastRowElements) / divisions;
+  const step = (params.to - params.from) / divisions;
 
   const divisionsByElement = [];
   for (let row = 0; row < fullRows; row++) {
-    for (let i = 0; i < params.divisions; i++) {
+    for (let i = 0; i < divisions; i++) {
       // for each division
       const limits = {
         from: params.from + step * i,
@@ -116,14 +117,17 @@ params: {
     maxDuration: <float from 0 to 1>, // default: 0.5
     minDuration: <float from 0 to 1> // default: 0.1
 }
+return array,
+0: duration
+1: position
 */
 export function timely(params) {
   // first we spread the starting point of our elements
   let startAndDuration = _addDimension(
     {
       numberOfElements: params.numberOfElements,
-      from: 0,
-      to: params.duration,
+      from: (params.minDuration || minDurationDefault) * params.duration,
+      to: (params.maxDuration || maxDurationDefault) * params.duration,
       divisions: params.divisions || defaultDivisions,
     },
     null

@@ -1,9 +1,9 @@
-const MotorCortex = require("@kissmybutton/motorcortex");
+import { HTMLClip, loadPlugin, Combo } from "@kissmybutton/motorcortex";
 const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
-const Anime = MotorCortex.loadPlugin(AnimeDefinition);
+const Anime = loadPlugin(AnimeDefinition);
 import { spatial, timely } from "../helpers/randomizer";
 
-export default class Stars extends MotorCortex.HTMLClip {
+export default class Stars extends HTMLClip {
   get html() {
     const attrs = spatial({
       dimensions: [
@@ -100,7 +100,7 @@ export default class Stars extends MotorCortex.HTMLClip {
 
 
     for (let i = 0; i < this.attrs.items; i++) {
-      const starScale = new MotorCortex.Combo(
+      const starScale = new Combo(
         {
           incidents: [
             {
