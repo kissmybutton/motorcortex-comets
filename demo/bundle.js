@@ -68,13 +68,13 @@ var clip = new (_kissmybutton_motorcortex__WEBPACK_IMPORTED_MODULE_0___default()
 var comet = new MyPlugin.Comets({
   width: 800,
   height: 300,
-  cometMaxSize: 581,
-  cometMinSize: 200,
+  cometMaxSize: 1500,
+  cometMinSize: 100,
   meteoriteColors: ["#FFFFFF", "#FFDC63"],
   auraIner: ["#57DDBA", "#62D8B9", "#7CC8B3"],
   auraOuter: ["#47F7C5", "#87B3C1"],
-  items: 3,
-  repeats: 5,
+  items: 6,
+  repeats: 1,
   duration: 8000
 }, {
   selector: '.comet1'
@@ -82,13 +82,13 @@ var comet = new MyPlugin.Comets({
 var cometMagenta = new MyPlugin.Comets({
   width: 800,
   height: 300,
-  cometMaxSize: 581,
-  cometMinSize: 200,
+  cometMaxSize: 1500,
+  cometMinSize: 100,
   meteoriteColors: ["#FFFFFF", "#FFDC63"],
   auraIner: ["#AF4095", "#D48E93", "#CC9C9F"],
   auraOuter: ["#E06D95", "#E7B4A7"],
-  items: 3,
-  repeats: 5,
+  items: 6,
+  repeats: 1,
   duration: 8000
 }, {
   selector: '.comet2'
@@ -96,12 +96,12 @@ var cometMagenta = new MyPlugin.Comets({
 var stars = new MyPlugin.Stars({
   width: 800,
   height: 300,
-  starMaxSize: 60,
-  starMinSize: 15,
+  starMaxSize: 30,
+  starMinSize: 5,
   starColor: "#F0F0F0",
   starGlowColor: "0 0 0 0 0.950946003   0 0 0 0 0.81265567   0 0 0 0 0.51528336  0 0 0 1 0",
-  items: 15,
-  repeats: 5,
+  items: 20,
+  repeats: 2,
   duration: 8000,
   blinkType: "opacity"
 }, {
@@ -119,86 +119,94 @@ var player = new (_kissmybutton_motorcortex_player__WEBPACK_IMPORTED_MODULE_2___
 /***/ 939:
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+/* provided dependency */ var Promise = __webpack_require__(641);
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-!function (t, e) {
-  "object" == ( false ? 0 : _typeof(exports)) && "undefined" != "object" ? module.exports = e() :  true ? !(__WEBPACK_AMD_DEFINE_FACTORY__ = (e),
+!function (t, n) {
+  "object" == ( false ? 0 : _typeof(exports)) && "undefined" != "object" ? module.exports = n(__webpack_require__(444)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(444)], __WEBPACK_AMD_DEFINE_FACTORY__ = (n),
 		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-		(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
-		__WEBPACK_AMD_DEFINE_FACTORY__),
+		(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : 0;
-}(this, function () {
+}(this, function (t) {
   "use strict";
 
-  function t(t, e) {
-    if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
+  function n(t) {
+    return t && "object" == _typeof(t) && "default" in t ? t : {
+      default: t
+    };
   }
 
-  function e(t, e) {
-    for (var n = 0; n < e.length; n++) {
-      var o = e[n];
+  var e = n(t);
+
+  function o(t, n) {
+    if (!(t instanceof n)) throw new TypeError("Cannot call a class as a function");
+  }
+
+  function r(t, n) {
+    for (var e = 0; e < n.length; e++) {
+      var o = n[e];
       o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(t, o.key, o);
     }
   }
 
-  function n(t, n, o) {
-    return n && e(t.prototype, n), o && e(t, o), t;
+  function i(t, n, e) {
+    return n && r(t.prototype, n), e && r(t, e), t;
   }
 
-  function o(t, e, n) {
-    return e in t ? Object.defineProperty(t, e, {
-      value: n,
+  function a(t, n, e) {
+    return n in t ? Object.defineProperty(t, n, {
+      value: e,
       enumerable: !0,
       configurable: !0,
       writable: !0
-    }) : t[e] = n, t;
+    }) : t[n] = e, t;
   }
 
-  function r(t, e) {
-    var n = Object.keys(t);
+  function s(t, n) {
+    var e = Object.keys(t);
 
     if (Object.getOwnPropertySymbols) {
       var o = Object.getOwnPropertySymbols(t);
-      e && (o = o.filter(function (e) {
-        return Object.getOwnPropertyDescriptor(t, e).enumerable;
-      })), n.push.apply(n, o);
+      n && (o = o.filter(function (n) {
+        return Object.getOwnPropertyDescriptor(t, n).enumerable;
+      })), e.push.apply(e, o);
     }
 
-    return n;
+    return e;
   }
 
-  function a(t, e) {
-    if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function");
-    t.prototype = Object.create(e && e.prototype, {
+  function p(t, n) {
+    if ("function" != typeof n && null !== n) throw new TypeError("Super expression must either be null or a function");
+    t.prototype = Object.create(n && n.prototype, {
       constructor: {
         value: t,
         writable: !0,
         configurable: !0
       }
-    }), e && s(t, e);
+    }), n && u(t, n);
   }
 
-  function i(t) {
-    return (i = Object.setPrototypeOf ? Object.getPrototypeOf : function (t) {
+  function l(t) {
+    return (l = Object.setPrototypeOf ? Object.getPrototypeOf : function (t) {
       return t.__proto__ || Object.getPrototypeOf(t);
     })(t);
   }
 
-  function s(t, e) {
-    return (s = Object.setPrototypeOf || function (t, e) {
-      return t.__proto__ = e, t;
-    })(t, e);
+  function u(t, n) {
+    return (u = Object.setPrototypeOf || function (t, n) {
+      return t.__proto__ = n, t;
+    })(t, n);
   }
 
-  function c(t, e) {
-    return !e || "object" != _typeof(e) && "function" != typeof e ? function (t) {
+  function c(t, n) {
+    return !n || "object" != _typeof(n) && "function" != typeof n ? function (t) {
       if (void 0 === t) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
       return t;
-    }(t) : e;
+    }(t) : n;
   }
 
-  function p(t) {
-    var e = function () {
+  function f(t) {
+    var n = function () {
       if ("undefined" == typeof Reflect || !Reflect.construct) return !1;
       if (Reflect.construct.sham) return !1;
       if ("function" == typeof Proxy) return !0;
@@ -211,201 +219,1957 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
     }();
 
     return function () {
-      var n,
-          o = i(t);
+      var e,
+          o = l(t);
 
-      if (e) {
-        var r = i(this).constructor;
-        n = Reflect.construct(o, arguments, r);
-      } else n = o.apply(this, arguments);
+      if (n) {
+        var r = l(this).constructor;
+        e = Reflect.construct(o, arguments, r);
+      } else e = o.apply(this, arguments);
 
-      return c(this, n);
+      return c(this, e);
     };
   }
 
-  var f = __webpack_require__(444),
-      l = __webpack_require__(99),
-      u = f.loadPlugin(l),
-      h = function (e) {
-    a(r, e);
-    var o = p(r);
+  function d(t, n) {
+    if (!(t instanceof n)) throw new TypeError("Cannot call a class as a function");
+  }
 
-    function r() {
-      return t(this, r), o.apply(this, arguments);
+  function y(t, n) {
+    for (var e = 0; e < n.length; e++) {
+      var o = n[e];
+      o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(t, o.key, o);
+    }
+  }
+
+  function h(t, n, e) {
+    return n && y(t.prototype, n), e && y(t, e), t;
+  }
+
+  function m(t, n, e) {
+    return n in t ? Object.defineProperty(t, n, {
+      value: e,
+      enumerable: !0,
+      configurable: !0,
+      writable: !0
+    }) : t[n] = e, t;
+  }
+
+  function g(t, n) {
+    var e = Object.keys(t);
+
+    if (Object.getOwnPropertySymbols) {
+      var o = Object.getOwnPropertySymbols(t);
+      n && (o = o.filter(function (n) {
+        return Object.getOwnPropertyDescriptor(t, n).enumerable;
+      })), e.push.apply(e, o);
     }
 
-    return n(r, [{
-      key: "buildTree",
-      value: function value() {
-        for (var t = 0; t < this.attrs.items; t++) {
-          var e = -29 * Math.PI / 180,
-              n = new u.Anime({
-            animatedAttrs: {
-              left: "-".concat(this.itemData[t].width, "px"),
-              top: "".concat(Math.tan(e) * (-this.itemData[t].width - this.itemData[t].left) + this.itemData[t].top, "px")
+    return e;
+  }
+
+  function v(t, n) {
+    if ("function" != typeof n && null !== n) throw new TypeError("Super expression must either be null or a function");
+    t.prototype = Object.create(n && n.prototype, {
+      constructor: {
+        value: t,
+        writable: !0,
+        configurable: !0
+      }
+    }), n && x(t, n);
+  }
+
+  function b(t) {
+    return (b = Object.setPrototypeOf ? Object.getPrototypeOf : function (t) {
+      return t.__proto__ || Object.getPrototypeOf(t);
+    })(t);
+  }
+
+  function x(t, n) {
+    return (x = Object.setPrototypeOf || function (t, n) {
+      return t.__proto__ = n, t;
+    })(t, n);
+  }
+
+  function w() {
+    if ("undefined" == typeof Reflect || !Reflect.construct) return !1;
+    if (Reflect.construct.sham) return !1;
+    if ("function" == typeof Proxy) return !0;
+
+    try {
+      return Date.prototype.toString.call(Reflect.construct(Date, [], function () {})), !0;
+    } catch (t) {
+      return !1;
+    }
+  }
+
+  function O(t, n) {
+    return !n || "object" != _typeof(n) && "function" != typeof n ? function (t) {
+      if (void 0 === t) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+      return t;
+    }(t) : n;
+  }
+
+  function P(t) {
+    return function () {
+      var n,
+          e = b(t);
+
+      if (w()) {
+        var o = b(this).constructor;
+        n = Reflect.construct(e, arguments, o);
+      } else n = e.apply(this, arguments);
+
+      return O(this, n);
+    };
+  }
+
+  var k = {},
+      M = {
+    duration: 1e3,
+    round: 0
+  },
+      S = ["translateX", "translateY", "translateZ", "rotate", "rotateX", "rotateY", "rotateZ", "scale", "scaleX", "scaleY", "scaleZ", "skew", "skewX", "skewY", "perspective"],
+      j = {
+    CSS: {}
+  };
+
+  function C(t, n, e) {
+    return Math.min(Math.max(t, n), e);
+  }
+
+  function E(t, n) {
+    return t.indexOf(n) > -1;
+  }
+
+  var I = {
+    arr: function arr(t) {
+      return Array.isArray(t);
+    },
+    obj: function obj(t) {
+      return E(Object.prototype.toString.call(t), "Object");
+    },
+    pth: function pth(t) {
+      return I.obj(t) && t.hasOwnProperty("totalLength");
+    },
+    svg: function svg(t) {
+      return t instanceof SVGElement;
+    },
+    inp: function inp(t) {
+      return t instanceof HTMLInputElement;
+    },
+    dom: function dom(t) {
+      return t.nodeType || I.svg(t);
+    },
+    str: function str(t) {
+      return "string" == typeof t;
+    },
+    fnc: function fnc(t) {
+      return "function" == typeof t;
+    },
+    und: function und(t) {
+      return void 0 === t;
+    },
+    hex: function hex(t) {
+      return /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(t);
+    },
+    rgb: function rgb(t) {
+      return /^rgb/.test(t);
+    },
+    hsl: function hsl(t) {
+      return /^hsl/.test(t);
+    },
+    col: function col(t) {
+      return I.hex(t) || I.rgb(t) || I.hsl(t);
+    },
+    key: function key(t) {
+      return !k.hasOwnProperty(t) && !M.hasOwnProperty(t) && "targets" !== t && "keyframes" !== t;
+    }
+  },
+      R = {
+    linear: function linear() {
+      return function (t) {
+        return t;
+      };
+    }
+  };
+
+  function T(t, n) {
+    for (var e = t.length, o = arguments.length >= 2 ? arguments[1] : void 0, r = [], i = 0; i < e; i++) {
+      if (i in t) {
+        var a = t[i];
+        n.call(o, a, i, t) && r.push(a);
+      }
+    }
+
+    return r;
+  }
+
+  function L(t) {
+    return t.reduce(function (t, n) {
+      return t.concat(I.arr(n) ? L(n) : n);
+    }, []);
+  }
+
+  function D(t) {
+    return I.arr(t) ? t : (I.str(t) && (t = function (t) {
+      try {
+        return document.querySelectorAll(t);
+      } catch (t) {
+        return;
+      }
+    }(t) || t), t instanceof NodeList || t instanceof HTMLCollection ? [].slice.call(t) : [t]);
+  }
+
+  function A(t, n) {
+    return t.some(function (t) {
+      return t === n;
+    });
+  }
+
+  function B(t) {
+    var n = {};
+
+    for (var e in t) {
+      n[e] = t[e];
+    }
+
+    return n;
+  }
+
+  function z(t, n) {
+    var e = B(t);
+
+    for (var o in t) {
+      e[o] = n.hasOwnProperty(o) ? n[o] : t[o];
+    }
+
+    return e;
+  }
+
+  function G(t, n) {
+    var e = B(t);
+
+    for (var o in n) {
+      e[o] = I.und(t[o]) ? n[o] : t[o];
+    }
+
+    return e;
+  }
+
+  function _(t) {
+    return I.rgb(t) ? (e = /rgb\((\d+,\s*[\d]+,\s*[\d]+)\)/g.exec(n = t)) ? "rgba(" + e[1] + ",1)" : n : I.hex(t) ? function (t) {
+      var n = t.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, function (t, n, e, o) {
+        return n + n + e + e + o + o;
+      }),
+          e = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(n);
+      return "rgba(" + parseInt(e[1], 16) + "," + parseInt(e[2], 16) + "," + parseInt(e[3], 16) + ",1)";
+    }(t) : I.hsl(t) ? function (t) {
+      var n,
+          e,
+          o,
+          r = /hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/g.exec(t) || /hsla\((\d+),\s*([\d.]+)%,\s*([\d.]+)%,\s*([\d.]+)\)/g.exec(t),
+          i = parseInt(r[1], 10) / 360,
+          a = parseInt(r[2], 10) / 100,
+          s = parseInt(r[3], 10) / 100,
+          p = r[4] || 1;
+
+      function l(t, n, e) {
+        return e < 0 && (e += 1), e > 1 && (e -= 1), e < 1 / 6 ? t + 6 * (n - t) * e : e < .5 ? n : e < 2 / 3 ? t + (n - t) * (2 / 3 - e) * 6 : t;
+      }
+
+      if (0 == a) n = e = o = s;else {
+        var u = s < .5 ? s * (1 + a) : s + a - s * a,
+            c = 2 * s - u;
+        n = l(c, u, i + 1 / 3), e = l(c, u, i), o = l(c, u, i - 1 / 3);
+      }
+      return "rgba(" + 255 * n + "," + 255 * e + "," + 255 * o + "," + p + ")";
+    }(t) : void 0;
+    var n, e;
+  }
+
+  function V(t) {
+    var n = /[+-]?\d*\.?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?(%|px|pt|em|rem|in|cm|mm|ex|ch|pc|vw|vh|vmin|vmax|deg|rad|turn)?$/.exec(t);
+    if (n) return n[1];
+  }
+
+  function X(t, n) {
+    return I.fnc(t) ? t(n.target, n.id, n.total) : t;
+  }
+
+  function Y(t, n) {
+    return t.getAttribute(n);
+  }
+
+  function U(t, n, e) {
+    if (A([e, "deg", "rad", "turn"], V(n))) return n;
+    var o = j.CSS[n + e];
+    if (!I.und(o)) return o;
+    var r = document.createElement(t.tagName),
+        i = t.parentNode && t.parentNode !== document ? t.parentNode : document.body;
+    i.appendChild(r), r.style.position = "absolute", r.style.width = 100 + e;
+    var a = 100 / r.offsetWidth;
+    i.removeChild(r);
+    var s = a * parseFloat(n);
+    return j.CSS[n + e] = s, s;
+  }
+
+  function W(t, n, e) {
+    if (n in t.style) {
+      var o = n.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase(),
+          r = t.style[n] || getComputedStyle(t).getPropertyValue(o) || "0";
+      return e ? U(t, r, e) : r;
+    }
+  }
+
+  function N(t, n) {
+    return I.dom(t) && !I.inp(t) && (Y(t, n) || I.svg(t) && t[n]) ? "attribute" : I.dom(t) && A(S, n) ? "transform" : I.dom(t) && "transform" !== n && W(t, n) ? "css" : null != t[n] ? "object" : void 0;
+  }
+
+  function Z(t) {
+    if (I.dom(t)) {
+      for (var n, e = t.style.transform || "", o = /(\w+)\(([^)]*)\)/g, r = new Map(); n = o.exec(e);) {
+        r.set(n[1], n[2]);
+      }
+
+      return r;
+    }
+  }
+
+  function q(t, n, e, o) {
+    var r = E(n, "scale") ? 1 : 0 + function (t) {
+      return E(t, "translate") || "perspective" === t ? "px" : E(t, "rotate") || E(t, "skew") ? "deg" : void 0;
+    }(n),
+        i = Z(t).get(n) || r;
+    return e && (e.transforms.list.set(n, i), e.transforms.last = n), o ? U(t, i, o) : i;
+  }
+
+  function F(t, n, e, o) {
+    switch (N(t, n)) {
+      case "transform":
+        return q(t, n, o, e);
+
+      case "css":
+        return W(t, n, e);
+
+      case "attribute":
+        return Y(t, n);
+
+      default:
+        return t[n] || 0;
+    }
+  }
+
+  function H(t, n) {
+    var e = /^(\*=|\+=|-=)/.exec(t);
+    if (!e) return t;
+    var o = V(t) || 0,
+        r = parseFloat(n),
+        i = parseFloat(t.replace(e[0], ""));
+
+    switch (e[0][0]) {
+      case "+":
+        return r + i + o;
+
+      case "-":
+        return r - i + o;
+
+      case "*":
+        return r * i + o;
+    }
+  }
+
+  function $(t, n) {
+    if (I.col(t)) return _(t);
+    if (/\s/g.test(t)) return t;
+    var e = V(t),
+        o = e ? t.substr(0, t.length - e.length) : t;
+    return n ? o + n : o;
+  }
+
+  function K(t, n) {
+    var e = /[+-]?\d*\.?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?/g,
+        o = $(I.pth(t) ? t.totalLength : t, n) + "";
+    return {
+      original: o,
+      numbers: o.match(e) ? o.match(e).map(Number) : [0],
+      strings: I.str(t) || n ? o.split(e) : []
+    };
+  }
+
+  function Q(t) {
+    var n = function (t) {
+      return T(t ? L(I.arr(t) ? t.map(D) : D(t)) : [], function (t, n, e) {
+        return e.indexOf(t) === n;
+      });
+    }(t);
+
+    return n.map(function (t, e) {
+      return {
+        target: t,
+        id: e,
+        total: n.length,
+        transforms: {
+          list: Z(t)
+        }
+      };
+    });
+  }
+
+  function J(t, n) {
+    var e = B(n);
+
+    if (I.arr(t)) {
+      var o = t.length;
+      2 === o && !I.obj(t[0]) ? t = {
+        value: t
+      } : I.fnc(n.duration) || (e.duration = n.duration / o);
+    }
+
+    return (I.arr(t) ? t : [t]).map(function (t, n) {
+      return I.obj(t) && !I.pth(t) ? t : {
+        value: t
+      };
+    }).map(function (t) {
+      return G(t, e);
+    });
+  }
+
+  function tt(t, n) {
+    var e;
+    return t.tweens.map(function (o) {
+      var r = function (t, n) {
+        var e = {};
+
+        for (var o in t) {
+          var r = X(t[o], n);
+          I.arr(r) && 1 === (r = r.map(function (t) {
+            return X(t, n);
+          })).length && (r = r[0]), e[o] = r;
+        }
+
+        return e.duration = parseFloat(e.duration), e;
+      }(o, n),
+          i = r.value,
+          a = I.arr(i) ? i[1] : i,
+          s = V(a),
+          p = F(n.target, t.name, s, n),
+          l = e ? e.to.original : p,
+          u = I.arr(i) ? i[0] : l,
+          c = V(u) || V(p),
+          f = s || c;
+
+      return I.und(a) && (a = l), r.from = K(u, f), r.to = K(H(a, u), f), r.start = e ? e.end : 0, r.end = r.start + r.duration, r.isPath = !1, r.isColor = I.col(r.from.original), r.isColor && (r.round = 1), e = r, r;
+    });
+  }
+
+  var nt = {
+    css: function css(t, n, e) {
+      return t.style[n] = e;
+    },
+    attribute: function attribute(t, n, e) {
+      return t.setAttribute(n, e);
+    },
+    object: function object(t, n, e) {
+      return t[n] = e;
+    },
+    transform: function transform(t, n, e, o, r) {
+      if (o.list.set(n, e), n === o.last || r) {
+        var i = "";
+        o.list.forEach(function (t, n) {
+          i += n + "(" + t + ") ";
+        }), t.style.transform = i;
+      }
+    }
+  };
+
+  function et(t, n) {
+    Q(t).forEach(function (t) {
+      for (var e in n) {
+        var o = X(n[e], t),
+            r = t.target,
+            i = V(o),
+            a = F(r, e, i, t),
+            s = H($(o, i || V(a)), a),
+            p = N(r, e);
+        nt[p](r, e, s, t.transforms, !0);
+      }
+    });
+  }
+
+  function ot(t, n) {
+    return T(L(t.map(function (t) {
+      return n.map(function (n) {
+        return function (t, n) {
+          var e = N(t.target, n.name);
+
+          if (e) {
+            var o = tt(n, t),
+                r = o[o.length - 1];
+            return {
+              type: e,
+              property: n.name,
+              animatable: t,
+              tweens: o,
+              duration: r.end
+            };
+          }
+        }(t, n);
+      });
+    })), function (t) {
+      return !I.und(t);
+    });
+  }
+
+  var rt = 0;
+
+  function it(t) {
+    var n = z(k, t),
+        e = z(M, t),
+        o = function (t, n) {
+      var e = [];
+
+      for (var o in n) {
+        I.key(o) && e.push({
+          name: o,
+          tweens: J(n[o], t)
+        });
+      }
+
+      return e;
+    }(e, t),
+        r = Q(t.targets),
+        i = ot(r, o),
+        a = function (t, n) {
+      var e = t.length,
+          o = {};
+      return o.duration = e ? Math.max.apply(Math, t.map(function (t) {
+        return t.duration;
+      })) : n.duration, o;
+    }(i, e),
+        s = rt;
+
+    return rt++, G(n, {
+      id: s,
+      children: [],
+      animatables: r,
+      animations: i,
+      duration: a.duration
+    });
+  }
+
+  function at(t) {
+    void 0 === t && (t = {});
+    var n,
+        e = 0,
+        o = null;
+
+    function r(t) {
+      var n = window.Promise && new Promise(function (t) {
+        return o = t;
+      });
+      return t.finished = n, n;
+    }
+
+    var i = it(t);
+    r(i);
+
+    function a(t, n) {
+      n && n.seek(t);
+    }
+
+    function s(t) {
+      var s = i.duration,
+          p = t;
+      i.progress = C(p / s * 100, 0, 100), i.reversePlayback = p < i.currentTime, n && function (t) {
+        if (i.reversePlayback) for (var o = e; o--;) {
+          a(t, n[o]);
+        } else for (var r = 0; r < e; r++) {
+          a(t, n[r]);
+        }
+      }(p), !i.began && i.currentTime > 0 && (i.began = !0), function (t) {
+        for (var n = 0, e = i.animations, o = e.length; n < o;) {
+          var r = e[n],
+              a = r.animatable,
+              s = r.tweens,
+              p = s.length - 1,
+              l = s[p];
+          p && (l = T(s, function (n) {
+            return t < n.end;
+          })[0] || l);
+
+          for (var u = C(t - l.start, 0, l.duration) / l.duration, c = l.to.strings, f = l.round, d = [], y = l.to.numbers.length, h = void 0, m = 0; m < y; m++) {
+            var g = void 0,
+                v = l.to.numbers[m],
+                b = l.from.numbers[m] || 0;
+            g = b + u * (v - b), f && (l.isColor && m > 2 || (g = Math.round(g * f) / f)), d.push(g);
+          }
+
+          var x = c.length;
+
+          if (x) {
+            h = c[0];
+
+            for (var w = 0; w < x; w++) {
+              c[w];
+              var O = c[w + 1],
+                  P = d[w];
+              isNaN(P) || (h += O ? P + O : P + " ");
             }
+          } else h = d[0];
+
+          nt[r.type](a.target, r.property, h, a.transforms), r.currentValue = h, n++;
+        }
+      }(p), i.currentTime = C(p, 0, s), t >= s && (i.paused = !0, i.completed || (i.completed = !0, !i.passThrough && "Promise" in window && (o(), r(i))));
+    }
+
+    return i.reset = function () {
+      i.passThrough = !1, i.currentTime = 0, i.progress = 0, i.paused = !0, i.began = !1, i.completed = !1, i.reversePlayback = !1, n = i.children;
+
+      for (var t = e = n.length; t--;) {
+        i.children[t].reset();
+      }
+    }, i.set = function (t, n) {
+      return et(t, n), i;
+    }, i.seek = function (t) {
+      s(t);
+    }, i.reset(), i;
+  }
+
+  function st(t, n) {
+    return Math.sqrt(Math.pow(n.x - t.x, 2) + Math.pow(n.y - t.y, 2));
+  }
+
+  function pt(t) {
+    for (var n, e = t.points, o = 0, r = 0; r < e.numberOfItems; r++) {
+      var i = e.getItem(r);
+      r > 0 && (o += st(n, i)), n = i;
+    }
+
+    return o;
+  }
+
+  function lt(t) {
+    if (t.getTotalLength) return t.getTotalLength();
+
+    switch (t.tagName.toLowerCase()) {
+      case "circle":
+        return function (t) {
+          return 2 * Math.PI * Y(t, "r");
+        }(t);
+
+      case "rect":
+        return function (t) {
+          return 2 * Y(t, "width") + 2 * Y(t, "height");
+        }(t);
+
+      case "line":
+        return function (t) {
+          return st({
+            x: Y(t, "x1"),
+            y: Y(t, "y1")
           }, {
-            selector: ".comet-svg-".concat(t),
-            duration: Math.floor(this.attrs.duration * (1 - this.itemData[t].size / this.attrs.cometMaxSize)),
-            repeats: this.attrs.repeats
+            x: Y(t, "x2"),
+            y: Y(t, "y2")
           });
-          this.addIncident(n, 0);
+        }(t);
+
+      case "polyline":
+        return pt(t);
+
+      case "polygon":
+        return function (t) {
+          var n = t.points;
+          return pt(t) + st(n.getItem(n.numberOfItems - 1), n.getItem(0));
+        }(t);
+    }
+  }
+
+  function ut(t, n) {
+    var e = n || {},
+        o = e.el || function (t) {
+      for (var n = t.parentNode; I.svg(n) && I.svg(n.parentNode);) {
+        n = n.parentNode;
+      }
+
+      return n;
+    }(t),
+        r = o.getBoundingClientRect(),
+        i = Y(o, "viewBox"),
+        a = r.width,
+        s = r.height,
+        p = e.viewBox || (i ? i.split(" ") : [0, 0, a, s]);
+
+    return {
+      el: o,
+      viewBox: p,
+      x: p[0] / 1,
+      y: p[1] / 1,
+      w: a,
+      h: s,
+      vW: p[2],
+      vH: p[3]
+    };
+  }
+
+  at.version = "3.1.0", at.get = F, at.set = et, at.convertPx = U, at.penner = R, at.path = function (t) {
+    return {
+      el: t,
+      svg: ut(t),
+      totalLength: lt(t),
+      deltaCorrections: {
+        x: 4,
+        y: 5
+      }
+    };
+  }, at.getPathProgress = function (t, n, e) {
+    function o(e) {
+      void 0 === e && (e = 0);
+      var o = n * t.totalLength,
+          r = o + e >= 1 ? o + e : 0;
+      return t.el.getPointAtLength(r);
+    }
+
+    var r = ut(t.el, t.svg),
+        i = o(),
+        a = o(-1),
+        s = o(1);
+    return {
+      x: 1 * (i.x - r.x),
+      y: 1 * (i.y - r.y),
+      angle: 180 * Math.atan2(s.y - a.y, s.x - a.x) / Math.PI
+    };
+  };
+  var ct = at,
+      ft = {
+    transform: ["translateX", "translateY", "translateZ", "rotate", "rotateX", "rotateY", "rotateZ", "scale", "scaleX", "scaleY", "scaleZ", "skewX", "skewY", "perspective"]
+  };
+  var dt = ["cm", "mm", "in", "px", "pt", "pc", "em", "ex", "ch", "rem", "vw", "vh", "vmin", "vmax", "%"],
+      yt = ["deg", "rad", "grad", "turn"],
+      ht = "measurement",
+      mt = "color",
+      gt = {
+    npm_name: "@kissmybutton/motorcortex-anime",
+    version: "2.1.11",
+    incidents: [{
+      exportable: function (t) {
+        v(e, t);
+        var n = P(e);
+
+        function e() {
+          return d(this, e), n.apply(this, arguments);
+        }
+
+        return h(e, [{
+          key: "onGetContext",
+          value: function value() {
+            var t = {};
+            if (Object.prototype.hasOwnProperty.call(ft, this.attributeKey)) for (var n = ft[this.attributeKey], e = 0; e < n.length; e++) {
+              Object.prototype.hasOwnProperty.call(this.targetValue, n[e]) && (t[n[e]] = [this.getInitialValue()[n[e]], this.targetValue[n[e]]]);
+            } else t[this.attributeKey] = [this.getInitialValue(), this.targetValue];
+            this.target = ct(function (t) {
+              for (var n = 1; n < arguments.length; n++) {
+                var e = null != arguments[n] ? arguments[n] : {};
+                n % 2 ? g(Object(e), !0).forEach(function (n) {
+                  m(t, n, e[n]);
+                }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(e)) : g(Object(e)).forEach(function (n) {
+                  Object.defineProperty(t, n, Object.getOwnPropertyDescriptor(e, n));
+                });
+              }
+
+              return t;
+            }({
+              autoplay: !1,
+              duration: this.props.duration,
+              easing: "linear",
+              targets: this.element
+            }, (this.attrs || {}).attrs || {}, {}, t));
+          }
+        }, {
+          key: "getScratchValue",
+          value: function value() {
+            if ("transform" === this.attributeKey) {
+              for (var t = {}, n = ft[this.attributeKey], e = function (t, n) {
+                var e = t.getComputedStyle(n).transform;
+                if ("" === e || "none" === e) return {};
+                var o,
+                    r,
+                    i,
+                    a,
+                    s,
+                    p,
+                    l,
+                    u,
+                    c = e.split("(")[1].split(")")[0].split(",");
+                return o = c, r = Math.atan2(o[1], o[0]), i = Math.pow(o[0], 2) + Math.pow(o[1], 2), a = Math.pow(o[2], 2) + Math.pow(o[3], 2), s = Math.sqrt(i), p = (o[0] * o[3] - o[2] * o[1]) / s, l = Math.atan2(o[0] * o[2] + o[1] * o[3], i), u = Math.atan2(o[1] * o[3] + o[0] * o[2], a), {
+                  rotate: r / (Math.PI / 180) + "deg",
+                  scaleX: s,
+                  scaleY: p,
+                  skewX: (1 === i ? l / (Math.PI / 180) : 0) + "deg",
+                  skewY: (1 === a ? u / (Math.PI / 180) : 0) + "deg",
+                  translateX: o[4] + "px",
+                  translateY: o[5] + "px"
+                };
+              }(this.context.window, this.element), o = 0; o < n.length; o++) {
+                Object.prototype.hasOwnProperty.call(e, n[o]) ? t[n[o]] = e[n[o]] : t[n[o]] = ct.get(this.element, n[o]);
+              }
+
+              return t;
+            }
+
+            return ct.get(this.element, this.attributeKey);
+          }
+        }, {
+          key: "onProgress",
+          value: function value(t) {
+            return this.target.seek(this.target.duration * t);
+          }
+        }]), e;
+      }(e.default.Effect),
+      name: "Anime",
+      attributesValidationRules: {
+        animatedAttrs: {
+          type: "object",
+          props: {
+            background: {
+              optional: !0,
+              type: mt
+            },
+            backgroundColor: {
+              optional: !0,
+              type: mt
+            },
+            backgroundPosition: {
+              optional: !0,
+              type: "string"
+            },
+            backgroundSize: {
+              optional: !0,
+              type: "string"
+            },
+            border: {
+              optional: !0,
+              type: "string"
+            },
+            borderBottom: {
+              optional: !0,
+              type: "string"
+            },
+            borderBottomColor: {
+              optional: !0,
+              type: mt
+            },
+            borderBottomLeftRadius: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            borderBottomRightRadius: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            borderBottomWidth: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            borderColor: {
+              optional: !0,
+              type: mt
+            },
+            borderEndEndRadius: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            borderEndStartRadius: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            borderImageOutset: {
+              optional: !0,
+              type: ht,
+              units: dt,
+              min: 0
+            },
+            borderImageSlice: {
+              optional: !0,
+              type: ht,
+              units: dt,
+              min: 0
+            },
+            borderImageWidth: {
+              optional: !0,
+              type: ht,
+              units: dt,
+              min: 0
+            },
+            borderLeft: {
+              optional: !0,
+              type: "string"
+            },
+            borderLeftColor: {
+              optional: !0,
+              type: mt
+            },
+            borderLeftWidth: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            borderRadius: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            borderRight: {
+              optional: !0,
+              type: "string"
+            },
+            borderRightColor: {
+              optional: !0,
+              type: mt
+            },
+            borderRightWidth: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            borderStartEndRadius: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            borderStartStartRadius: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            borderTop: {
+              optional: !0,
+              type: "string"
+            },
+            borderTopColor: {
+              optional: !0,
+              type: mt
+            },
+            borderTopLeftRadius: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            borderTopRightRadius: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            borderTopWidth: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            borderWidth: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            bottom: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            boxShadow: {
+              optional: !0,
+              type: "string"
+            },
+            caretColor: {
+              optional: !0,
+              type: mt
+            },
+            color: {
+              optional: !0,
+              type: mt
+            },
+            columnCount: {
+              optional: !0,
+              type: "number",
+              min: 0,
+              integer: !0
+            },
+            columnGap: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            columnRule: {
+              optional: !0,
+              type: "string"
+            },
+            columnRuleColor: {
+              optional: !0,
+              type: mt
+            },
+            columnRuleWidth: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            columns: {
+              optional: !0,
+              type: "number",
+              min: 0,
+              integer: !0
+            },
+            columnWidth: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            flex: {
+              optional: !0,
+              type: "number",
+              min: 0,
+              integer: !0
+            },
+            flexBasis: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            flexGrow: {
+              optional: !0,
+              type: "number",
+              min: 0,
+              integer: !0
+            },
+            flexShrink: {
+              optional: !0,
+              type: "number",
+              min: 0,
+              integer: !0
+            },
+            font: {
+              optional: !0,
+              type: "string"
+            },
+            fontSize: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            fontSizeAdjust: {
+              optional: !0,
+              type: ht,
+              units: dt,
+              min: 0
+            },
+            fontStretch: {
+              optional: !0,
+              type: ht,
+              units: ["%"]
+            },
+            fontWeight: {
+              optional: !0,
+              type: "string"
+            },
+            gap: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            gridColumnGap: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            gridGap: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            gridRowGap: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            gridTemplateColumns: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            gridTemplateRows: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            height: {
+              optional: !0,
+              type: ht,
+              units: dt,
+              min: 0
+            },
+            inset: {
+              optional: !0,
+              type: ht,
+              units: dt,
+              min: 0
+            },
+            insetBlock: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            insetBlockEnd: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            insetBlockStart: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            insetInline: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            insetInlineEnd: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            insetInlineStart: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            left: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            letterSpacing: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            lineClamp: {
+              optional: !0,
+              type: "number",
+              min: 0,
+              integer: !0
+            },
+            lineHeight: {
+              optional: !0,
+              type: ht,
+              units: dt,
+              min: 0
+            },
+            margin: {
+              optional: !0,
+              type: "string"
+            },
+            marginBottom: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            marginLeft: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            marginRight: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            marginTop: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            maskBorder: {
+              optional: !0,
+              type: ht,
+              units: dt,
+              min: 0
+            },
+            maskPosition: {
+              optional: !0,
+              type: "string"
+            },
+            maskSize: {
+              optional: !0,
+              type: "string"
+            },
+            maxHeight: {
+              optional: !0,
+              type: ht,
+              units: dt,
+              min: 0
+            },
+            maxWidth: {
+              optional: !0,
+              type: ht,
+              units: dt,
+              min: 0
+            },
+            objectPosition: {
+              optional: !0,
+              type: "string"
+            },
+            offset: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            offsetAnchor: {
+              optional: !0,
+              type: "string"
+            },
+            offsetDistance: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            offsetPath: {
+              optional: !0,
+              type: "string"
+            },
+            offsetPosition: {
+              optional: !0,
+              type: "string"
+            },
+            offsetRotate: {
+              optional: !0,
+              type: ht,
+              units: yt
+            },
+            opacity: {
+              optional: !0,
+              type: "number",
+              min: 0,
+              max: 1
+            },
+            order: {
+              optional: !0,
+              type: "number",
+              integer: !0
+            },
+            outline: {
+              optional: !0,
+              type: "string"
+            },
+            outlineColor: {
+              optional: !0,
+              type: mt
+            },
+            outlineOffset: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            outlineRadius: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            outlineRadiusBottomleft: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            outlineRadiusBottomright: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            outlineRadiusTopleft: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            outlineRadiusTopright: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            outlineWidth: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            padding: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            paddingBottom: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            paddingLeft: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            paddingRight: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            paddingTop: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            perspective: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            perspectiveOrigin: {
+              optional: !0,
+              type: "string"
+            },
+            right: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            rotate: {
+              optional: !0,
+              type: ht,
+              units: yt
+            },
+            rowGap: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scale: {
+              optional: !0,
+              type: "number",
+              min: 0
+            },
+            scrollbarColor: {
+              optional: !0,
+              type: mt
+            },
+            scrollMargin: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollMarginBlock: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollMarginBlockEnd: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollMarginBlockStart: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollMarginBottom: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollMarginInline: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollMarginInlineEnd: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollMarginInlineStart: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollMarginLeft: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollMarginRight: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollMarginTop: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollPadding: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollPaddingBlock: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollPaddingBlockEnd: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollPaddingBlockStart: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollPaddingBottom: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollPaddingInline: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollPaddingInlineEnd: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollPaddingInlineStart: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollPaddingLeft: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollPaddingRight: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollPaddingTop: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            scrollSnapCoordinate: {
+              optional: !0,
+              type: "string"
+            },
+            scrollSnapDestination: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            shapeImageThreshold: {
+              optional: !0,
+              type: "string"
+            },
+            shapeMargin: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            shapeOutside: {
+              optional: !0,
+              type: "string"
+            },
+            tabSize: {
+              optional: !0,
+              type: "string"
+            },
+            textDecoration: {
+              optional: !0,
+              type: "string"
+            },
+            textDecorationColor: {
+              optional: !0,
+              type: mt
+            },
+            textDecorationThickness: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            textEmphasis: {
+              optional: !0,
+              type: "string"
+            },
+            textEmphasisColor: {
+              optional: !0,
+              type: mt
+            },
+            textFillColor: {
+              optional: !0,
+              type: mt
+            },
+            textIndent: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            textShadow: {
+              optional: !0,
+              type: "string"
+            },
+            textStroke: {
+              optional: !0,
+              type: "string"
+            },
+            textStrokeColor: {
+              optional: !0,
+              type: mt
+            },
+            textUnderlineOffset: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            top: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            transform: {
+              optional: !0,
+              type: "object",
+              props: {
+                translateX: {
+                  type: ht,
+                  units: dt,
+                  optional: !0
+                },
+                translateY: {
+                  type: ht,
+                  units: dt,
+                  optional: !0
+                },
+                translateZ: {
+                  type: ht,
+                  units: dt,
+                  optional: !0
+                },
+                rotate: {
+                  type: ht,
+                  units: yt,
+                  optional: !0
+                },
+                rotateX: {
+                  type: ht,
+                  units: yt,
+                  optional: !0
+                },
+                rotateY: {
+                  type: ht,
+                  units: yt,
+                  optional: !0
+                },
+                rotateZ: {
+                  type: ht,
+                  units: yt,
+                  optional: !0
+                },
+                scale: {
+                  type: "number",
+                  min: 0,
+                  optional: !0
+                },
+                scaleX: {
+                  type: "number",
+                  min: 0,
+                  optional: !0
+                },
+                scaleY: {
+                  type: "number",
+                  min: 0,
+                  optional: !0
+                },
+                scaleZ: {
+                  type: "number",
+                  min: 0,
+                  optional: !0
+                },
+                skewX: {
+                  type: ht,
+                  units: yt,
+                  optional: !0
+                },
+                skewY: {
+                  type: ht,
+                  units: yt,
+                  optional: !0
+                },
+                perspective: {
+                  type: ht,
+                  units: dt,
+                  optional: !0
+                }
+              }
+            },
+            transformOrigin: {
+              optional: !0,
+              type: "string"
+            },
+            verticalAlign: {
+              optional: !0,
+              type: "string"
+            },
+            visibility: {
+              optional: !0,
+              type: "string"
+            },
+            width: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            wordSpacing: {
+              optional: !0,
+              type: ht,
+              units: dt
+            },
+            zIndex: {
+              optional: !0,
+              type: "number",
+              integer: !0
+            },
+            zoom: {
+              optional: !0,
+              type: ht,
+              units: ["%"],
+              min: 0
+            }
+          },
+          transformOrigin: {
+            type: "string"
+          },
+          verticalAlign: {
+            type: "string"
+          },
+          visibility: {
+            type: "string"
+          },
+          width: {
+            type: ht,
+            units: dt
+          },
+          wordSpacing: {
+            type: ht,
+            units: dt
+          },
+          zIndex: {
+            type: "number",
+            integer: !0
+          },
+          zoom: {
+            type: ht,
+            units: ["%"],
+            min: 0
+          }
         }
       }
     }, {
-      key: "font",
-      get: function get() {
-        return [{
-          type: "google-font",
-          src: "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,500;0,800;1,700;1,800;1,900&display=swap"
-        }];
+      exportable: function (t) {
+        v(e, t);
+        var n = P(e);
+
+        function e() {
+          return d(this, e), n.apply(this, arguments);
+        }
+
+        return h(e, [{
+          key: "onGetContext",
+          value: function value() {
+            this.pixelsAccuracy = this.attrs.pixelsAccuracy || 4, this.calculatedPoints = [];
+            var t = this.context.getElements(this.targetValue.pathElement)[0];
+            this.path = ct.path(t), this.isPathTargetInsideSVG = this.element instanceof SVGElement;
+          }
+        }, {
+          key: "onProgress",
+          value: function value(t) {
+            var n,
+                e = Math.round(this.path.totalLength / this.pixelsAccuracy * t) * this.pixelsAccuracy;
+            if (null !== this.calculatedPoints[e] && void 0 !== this.calculatedPoints[e]) n = this.calculatedPoints[e];else {
+              var o = ct.getPathProgress(this.path, e / this.path.totalLength, this.isPathTargetInsideSVG);
+              n = "\n            translateX(".concat(o.x, "px)\n            translateY(").concat(o.y, "px)\n            rotate(").concat(o.angle, "deg)\n        "), this.calculatedPoints[e] = n;
+            }
+            this.element.style.transform = n;
+          }
+        }]), e;
+      }(e.default.Effect),
+      name: "MotionPath",
+      attributesValidationRules: {
+        animatedAttrs: {
+          type: "object",
+          props: {
+            positionOn: {
+              type: "object",
+              props: {
+                pathElement: {
+                  type: "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }],
+    compositeAttributes: ft
+  };
+
+  function vt(t, n) {
+    if (null === n) {
+      n = [];
+
+      for (var e = 0; e < t.numberOfElements; e++) {
+        n.push([]);
+      }
+    }
+
+    for (var o = t.divisions || 4, r = t.numberOfElements % o, i = (t.numberOfElements - r) / o, a = (t.to - t.from) / o, s = [], p = 0; p < i; p++) {
+      for (var l = 0; l < o; l++) {
+        var u = {
+          from: t.from + a * l,
+          to: t.from + a * (l + 1)
+        };
+        s.push(u);
+      }
+    }
+
+    if (0 !== r) for (var c = (t.to - t.from) / r, f = 0; f < r; f++) {
+      var d = {
+        from: t.from + c * f,
+        to: t.from + c * (f + 1)
+      };
+      s.push(d);
+    }
+
+    for (var y = 0; y < s.length; y++) {
+      n[y].push(Math.random() * (s[y].to - s[y].from) + s[y].from);
+    }
+
+    return function (t) {
+      for (var n, e, o = t.length; 0 !== o;) {
+        e = Math.floor(Math.random() * o), n = t[o -= 1], t[o] = t[e], t[e] = n;
+      }
+
+      return t;
+    }(n);
+  }
+
+  function bt(t) {
+    var n = vt({
+      numberOfElements: t.numberOfElements,
+      from: (t.minDuration || .2) * t.duration,
+      to: (t.maxDuration || .6) * t.duration,
+      divisions: t.divisions || 4
+    }, null);
+    n = vt({
+      numberOfElements: t.numberOfElements,
+      from: .3,
+      to: 1,
+      divisions: t.divisions || 4
+    }, n);
+
+    for (var e = {
+      ms: 0,
+      reference: null
+    }, o = 0; o < n.length; o++) {
+      var r = n[o];
+      r[0] = Math.round(r[0]), e.ms < r[0] && (e = {
+        ms: r[0],
+        reference: r
+      }), r[1] = Math.floor(t.duration - r[0] < t.duration * (t.maxDuration || .6) ? (t.duration - r[0]) * r[1] : (t.maxDuration || .6) * t.duration * r[1]);
+    }
+
+    return e.reference[1] = t.duration - e.reference[0], n;
+  }
+
+  var xt = t.loadPlugin(gt),
+      wt = function (t) {
+    p(e, t);
+    var n = f(e);
+
+    function e() {
+      return o(this, e), n.apply(this, arguments);
+    }
+
+    return i(e, [{
+      key: "buildTree",
+      value: function value() {
+        for (var t = 0; t < this.comets.length; t++) {
+          var n = -29 * Math.PI / 180,
+              e = new xt.Anime({
+            animatedAttrs: {
+              left: "-".concat(this.itemData[t].width, "px"),
+              top: "".concat(Math.tan(n) * (-this.itemData[t].width - this.itemData[t].left) + this.itemData[t].top, "px")
+            }
+          }, {
+            selector: ".comet-svg-".concat(t),
+            duration: this.comets[t][0],
+            delay: this.comets[t][1],
+            repeats: this.attrs.repeats
+          });
+          console.log(this.addIncident(e, 0));
+        }
       }
     }, {
       key: "html",
       get: function get() {
-        var t = [];
-        this.itemData = [];
+        this.comets = bt({
+          duration: this.attrs.duration / this.attrs.repeats,
+          numberOfElements: this.attrs.items,
+          minDuration: .1,
+          maxDuration: .9
+        });
 
-        for (var e = 0; e < this.attrs.items; e++) {
-          var n = Math.floor(Math.random() * (+this.attrs.cometMaxSize + 1 - +this.attrs.cometMinSize)) + +this.attrs.cometMinSize,
-              o = 59 * Math.PI / 180,
-              r = 31 * Math.PI / 180,
-              a = 90 * Math.PI / 180,
-              i = n,
-              s = i * Math.sin(o) / Math.sin(a),
-              c = i * Math.sin(r) / Math.sin(a),
-              p = Math.floor(Math.random() * (+this.attrs.width + s + 1 - 0)) + 0;
-          this.itemData.push({
-            left: p,
-            top: -c,
-            width: s,
-            size: n
-          }), t += ' \n      <svg class="comet-svg comet-svg-'.concat(e, '" style="left: ').concat(p, "px; top: -").concat(c, "px; width: ").concat(s, "px; height: ").concat(c, 'px;" xmlns="http://www.w3.org/2000/svg" class="comet-green-svg" data-name="Layer 1" viewBox="0 0 450 270.44">\n      <defs>\n        <linearGradient id="b" x1="-56.99" x2="-56.74" y1="394.68" y2="394.93" gradientTransform="matrix(1363.47 0 0 -819.42 77776.05 323638.12)" gradientUnits="userSpaceOnUse">\n          <stop offset="0" stop-color="').concat(this.attrs.auraOuter[0], '" stop-opacity=".59"/>\n          <stop offset="1" stop-color="').concat(this.attrs.auraOuter[1], '" stop-opacity="0"/>\n        </linearGradient>\n        <linearGradient id="d" x1="-56.97" x2="-56.79" y1="394.95" y2="395.11" gradientTransform="matrix(900.62 0 0 -542.55 51377.26 214502.16)" gradientUnits="userSpaceOnUse">\n          <stop offset="0" stop-color="').concat(this.attrs.auraIner[0], '"/>\n          <stop offset=".31" stop-color="').concat(this.attrs.auraIner[1], '" stop-opacity=".97"/>\n          <stop offset="1" stop-color="').concat(this.attrs.auraIner[2], '" stop-opacity="0"/>\n        </linearGradient>\n        <linearGradient id="f" x1="-56.81" x2="-56.49" y1="399.49" y2="399.76" gradientTransform="matrix(116.79 0 0 -75.59 6649.18 30453.64)" gradientUnits="userSpaceOnUse">\n          <stop offset="0" stop-color="').concat(this.attrs.meteoriteColors[0], '"/>\n          <stop offset="1" stop-color="').concat(this.attrs.meteoriteColors[1], '"/>\n        </linearGradient>\n        <mask id="a" width="450" height="270.44" x="0" y="0" maskUnits="userSpaceOnUse">\n          <path fill="#fff" fill-rule="evenodd" d="M11.33 230a21.52 21.52 0 0020.31 38L450 38 429.7 0 11.33 230z"/>\n        </mask>\n        <mask id="c" width="297.24" height="179.06" x="7.51" y="84.83" maskUnits="userSpaceOnUse">\n          <path fill="#fff" fill-rule="evenodd" d="M14.65 238.41a13.55 13.55 0 0012.78 23.89l277.32-153.58L292 84.83 14.65 238.41z"/>\n        </mask>\n        <mask id="e" width="38.55" height="24.95" x="12.81" y="234.29" maskUnits="userSpaceOnUse">\n          <path fill="#fff" fill-rule="evenodd" d="M17.69 241.85a9.24 9.24 0 008.73 16.29c4.5-2.41 24.94-23.85 24.94-23.85s-29.17 5.15-33.67 7.56"/>\n        </mask>\n      </defs>\n      <g mask="url(#a)">\n        <path fill="url(#b)" fill-rule="evenodd" d="M11.33 230a21.52 21.52 0 0020.31 38L450 38 429.7 0 11.33 230z"/>\n      </g>\n      <g mask="url(#c)">\n        <path fill="url(#d)" fill-rule="evenodd" d="M14.65 238.41a13.55 13.55 0 0012.78 23.89l277.32-153.58L292 84.83 14.65 238.41z"/>\n      </g>\n      <g mask="url(#e)">\n        <path fill="url(#f)" fill-rule="evenodd" d="M17.69 241.85a9.24 9.24 0 008.73 16.29c4.5-2.41 24.94-23.85 24.94-23.85s-29.17 5.15-33.67 7.56"/>\n      </g>\n    </svg>');
+        for (var t = 0; t < this.comets.length; t++) {
+          var n = this.comets[t],
+              e = n[0] / (this.attrs.duration / this.attrs.repeats),
+              o = (this.attrs.cometMaxSize - this.attrs.cometMinSize) * (1 - e) + this.attrs.cometMinSize;
+          n.push(o);
         }
 
-        return '\n    <div class="wrapper">\n      '.concat(t, "\n    </div>\n    \n\n    ");
+        var r = 61 * Math.PI / 180,
+            i = this.attrs.height * Math.tan(r);
+        this.comets = vt({
+          from: 0,
+          to: this.attrs.width + i,
+          numberOfElements: this.attrs.items
+        }, this.comets);
+        var a = [];
+        this.itemData = [];
+
+        for (var s = 61 * Math.PI / 180, p = 29 * Math.PI / 180, l = 0; l < this.attrs.items; l++) {
+          var u = this.comets[l][2],
+              c = u * Math.sin(p),
+              f = u * Math.sin(s),
+              d = this.comets[l][3];
+          this.itemData.push({
+            left: d,
+            top: -f,
+            width: c,
+            size: u
+          }), a += ' \n                <svg class="comet-svg comet-svg-'.concat(l, '" style="left: ').concat(d, "px; top: -").concat(f, "px; width: ").concat(c, "px; height: ").concat(f, 'px;" xmlns="http://www.w3.org/2000/svg" class="comet-green-svg" data-name="Layer 1" viewBox="0 0 450 270.44">\n                <defs>\n                    <linearGradient id="b" x1="-56.99" x2="-56.74" y1="394.68" y2="394.93" gradientTransform="matrix(1363.47 0 0 -819.42 77776.05 323638.12)" gradientUnits="userSpaceOnUse">\n                    <stop offset="0" stop-color="').concat(this.attrs.auraOuter[0], '" stop-opacity=".59"/>\n                    <stop offset="1" stop-color="').concat(this.attrs.auraOuter[1], '" stop-opacity="0"/>\n                    </linearGradient>\n                    <linearGradient id="d" x1="-56.97" x2="-56.79" y1="394.95" y2="395.11" gradientTransform="matrix(900.62 0 0 -542.55 51377.26 214502.16)" gradientUnits="userSpaceOnUse">\n                    <stop offset="0" stop-color="').concat(this.attrs.auraIner[0], '"/>\n                    <stop offset=".31" stop-color="').concat(this.attrs.auraIner[1], '" stop-opacity=".97"/>\n                    <stop offset="1" stop-color="').concat(this.attrs.auraIner[2], '" stop-opacity="0"/>\n                    </linearGradient>\n                    <linearGradient id="f" x1="-56.81" x2="-56.49" y1="399.49" y2="399.76" gradientTransform="matrix(116.79 0 0 -75.59 6649.18 30453.64)" gradientUnits="userSpaceOnUse">\n                    <stop offset="0" stop-color="').concat(this.attrs.meteoriteColors[0], '"/>\n                    <stop offset="1" stop-color="').concat(this.attrs.meteoriteColors[1], '"/>\n                    </linearGradient>\n                    <mask id="a" width="450" height="270.44" x="0" y="0" maskUnits="userSpaceOnUse">\n                    <path fill="#fff" fill-rule="evenodd" d="M11.33 230a21.52 21.52 0 0020.31 38L450 38 429.7 0 11.33 230z"/>\n                    </mask>\n                    <mask id="c" width="297.24" height="179.06" x="7.51" y="84.83" maskUnits="userSpaceOnUse">\n                    <path fill="#fff" fill-rule="evenodd" d="M14.65 238.41a13.55 13.55 0 0012.78 23.89l277.32-153.58L292 84.83 14.65 238.41z"/>\n                    </mask>\n                    <mask id="e" width="38.55" height="24.95" x="12.81" y="234.29" maskUnits="userSpaceOnUse">\n                    <path fill="#fff" fill-rule="evenodd" d="M17.69 241.85a9.24 9.24 0 008.73 16.29c4.5-2.41 24.94-23.85 24.94-23.85s-29.17 5.15-33.67 7.56"/>\n                    </mask>\n                </defs>\n                <g mask="url(#a)">\n                    <path fill="url(#b)" fill-rule="evenodd" d="M11.33 230a21.52 21.52 0 0020.31 38L450 38 429.7 0 11.33 230z"/>\n                </g>\n                <g mask="url(#c)">\n                    <path fill="url(#d)" fill-rule="evenodd" d="M14.65 238.41a13.55 13.55 0 0012.78 23.89l277.32-153.58L292 84.83 14.65 238.41z"/>\n                </g>\n                <g mask="url(#e)">\n                    <path fill="url(#f)" fill-rule="evenodd" d="M17.69 241.85a9.24 9.24 0 008.73 16.29c4.5-2.41 24.94-23.85 24.94-23.85s-29.17 5.15-33.67 7.56"/>\n                </g>\n                </svg>\n            ');
+        }
+
+        return '\n            <div class="wrapper">\n            '.concat(a, "\n            </div>\n        ");
       }
     }, {
       key: "css",
       get: function get() {
-        return "\n    .wrapper{\n      width: ".concat(this.attrs.width, "px;\n      height:").concat(this.attrs.height, "px;\n    }\n    .comet-svg{\n      position: absolute;\n      z-index: 3;\n    }\n\n  ");
+        return "\n            .wrapper{\n                width: ".concat(this.attrs.width, "px;\n                height:").concat(this.attrs.height, "px;\n            }\n            .comet-svg{\n                position: absolute;\n                z-index: 3;\n            }\n        ");
       }
-    }]), r;
-  }(f.HTMLClip),
-      d = __webpack_require__(444),
-      m = __webpack_require__(99),
-      y = d.loadPlugin(m),
-      g = function (e) {
-    a(r, e);
-    var o = p(r);
+    }]), e;
+  }(t.HTMLClip),
+      Ot = __webpack_require__(99),
+      Pt = t.loadPlugin(Ot),
+      kt = function (n) {
+    p(r, n);
+    var e = f(r);
 
     function r() {
-      return t(this, r), o.apply(this, arguments);
+      return o(this, r), e.apply(this, arguments);
     }
 
-    return n(r, [{
+    return i(r, [{
       key: "buildTree",
       value: function value() {
-        if (this.attrs.blinkType && "opacity" === this.attrs.blinkType) for (var t = 0; t < this.attrs.items; t++) {
-          var e = Math.floor(1e3 * Math.random()),
-              n = this.attrs.duration / 2 * ((Math.floor(91 * Math.random()) + 10) / 100),
-              o = new d.Combo({
-            incidents: [{
-              incidentClass: y.Anime,
-              attrs: {
-                animatedAttrs: {
-                  opacity: 0
-                }
-              },
-              props: {
-                duration: n
-              },
-              position: 0
-            }, {
-              incidentClass: y.Anime,
-              attrs: {
-                animatedAttrs: {
-                  opacity: 1
-                }
-              },
-              props: {
-                duration: n
-              },
-              position: n + e
-            }]
-          }, {
-            selector: ".stars-svg-".concat(t),
-            repeats: this.attrs.repeats
-          });
-          this.addIncident(o, e);
-        } else for (var r = 0; r < this.attrs.items; r++) {
-          var a = Math.floor(1e3 * Math.random()),
-              i = this.attrs.duration / 2 * ((Math.floor(91 * Math.random()) + 10) / 100),
-              s = new d.Combo({
-            incidents: [{
-              incidentClass: y.Anime,
-              attrs: {
-                animatedAttrs: {
-                  transform: {
-                    scale: 0
-                  }
-                }
-              },
-              props: {
-                duration: i
-              },
-              position: 0
-            }, {
-              incidentClass: y.Anime,
-              attrs: {
-                animatedAttrs: {
-                  transform: {
-                    scale: 1
-                  }
-                }
-              },
-              props: {
-                duration: i
-              },
-              position: i + a
-            }]
-          }, {
-            selector: ".stars-svg-".concat(r),
-            repeats: this.attrs.repeats
-          });
-          this.addIncident(s, a);
+        function n(t) {
+          var n = arguments.length > 1 && void 0 !== arguments[1] && arguments[1];
+          return !0 === n ? {
+            opacity: t
+          } : {
+            transform: {
+              scale: t
+            }
+          };
         }
-      }
-    }, {
-      key: "font",
-      get: function get() {
-        return [{
-          type: "google-font",
-          src: "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,500;0,800;1,700;1,800;1,900&display=swap"
-        }];
+
+        for (var e = bt({
+          duration: this.attrs.duration / this.attrs.repeats,
+          divisions: 3,
+          numberOfElements: this.attrs.items,
+          minDuration: .2,
+          maxDuration: 1
+        }), o = 0; o < this.attrs.items; o++) {
+          var r = new t.Combo({
+            incidents: [{
+              incidentClass: Pt.Anime,
+              attrs: {
+                animatedAttrs: n(0, "opacity" === this.attrs.blinkType)
+              },
+              props: {
+                duration: Math.round(e[o][1] / 2)
+              },
+              position: 0
+            }, {
+              incidentClass: Pt.Anime,
+              attrs: {
+                animatedAttrs: n(1, "opacity" === this.attrs.blinkType)
+              },
+              props: {
+                duration: Math.round(e[o][1] / 2)
+              },
+              position: Math.round(e[o][1] / 2)
+            }]
+          }, {
+            selector: ".stars-svg-".concat(o),
+            delay: e[o][0],
+            repeats: this.attrs.repeats
+          });
+          this.addIncident(r, 0);
+        }
       }
     }, {
       key: "html",
       get: function get() {
-        var t = [];
-        this.itemData = [];
+        for (var t = function (t) {
+          t.divisions || (t.divisions = []);
 
-        for (var e = 0; e < this.attrs.items; e++) {
-          var n = Math.floor(Math.random() * (+this.attrs.starMaxSize + 1 - +this.attrs.starMinSize)) + +this.attrs.starMinSize,
-              o = Math.floor(Math.random() * (this.attrs.height - n)),
-              r = Math.floor(Math.random() * (this.attrs.width - n));
-          this.itemData.push({
-            left: r,
-            top: o,
-            size: n
-          }), console.log({
-            left: r,
-            top: o,
-            size: n
-          }), t += ' \n      <svg class="stars-svg stars-svg-'.concat(e, '" width="').concat(n, 'px" height="').concat(n, 'px" style="left: ').concat(r, "px; top:").concat(o, 'px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50.15">\n<defs>\n  <radialGradient id="radial-gradient" cx="25.98" cy="26.84" r="22.27" gradientUnits="userSpaceOnUse">\n    <stop offset="0" stop-color="#fff9a6" stop-opacity="0.9"/>\n    <stop offset="0.07" stop-color="#fffab3" stop-opacity="0.77"/>\n    <stop offset="0.2" stop-color="#fffbc7" stop-opacity="0.57"/>\n    <stop offset="0.34" stop-color="#fffcd8" stop-opacity="0.4"/>\n    <stop offset="0.47" stop-color="#fffde6" stop-opacity="0.25"/>\n    <stop offset="0.6" stop-color="#fffef1" stop-opacity="0.14"/>\n    <stop offset="0.74" stop-color="#fffff9" stop-opacity="0.06"/>\n    <stop offset="0.87" stop-color="#fffffd" stop-opacity="0.02"/>\n    <stop offset="1" stop-color="#fff" stop-opacity="0"/>\n  </radialGradient>\n</defs>\n<title>Asset 10</title>\n<g id="Layer_2" data-name="Layer 2">\n  <g id="Layer_2-2" data-name="Layer 2">\n    <g>\n      <circle cx="25.98" cy="26.84" r="22.27" fill="url(#radial-gradient)"/>\n      <path id="stars-svg-path-1" d="M.15,26.27q13.13-2,18.73-4.52Q24.31,19.32,26,.16h0A.18.18,0,0,1,26.14,0a.19.19,0,0,1,.17.17q.6,17.88,6.81,21.58t16.72,4.62h0a.18.18,0,0,1,.16.2.19.19,0,0,1-.16.16Q38.1,27.86,33.12,32.05T26.49,50h0a.18.18,0,0,1-.36,0Q25.31,36.65,18.88,32T.17,26.62h0A.17.17,0,0,1,0,26.43.18.18,0,0,1,.15,26.27Z" fill="').concat(this.attrs.starColor, '" fill-rule="evenodd"/>\n    </g>\n  </g>\n</g>\n</svg>');
+          for (var n = null, e = 0; e < t.dimensions.length; e++) {
+            var o = t.dimensions[e],
+                r = t.divisions[e] || 4;
+            n = vt({
+              from: o[0],
+              to: o[1],
+              numberOfElements: t.numberOfElements,
+              divisions: r
+            }, n);
+          }
+
+          return n;
+        }({
+          dimensions: [[0, this.attrs.width], [0, this.attrs.height], [this.attrs.starMinSize, this.attrs.starMaxSize]],
+          divisions: [Math.floor(this.attrs.items / 2), Math.floor(this.attrs.items / 2), this.attrs.items],
+          numberOfElements: this.attrs.items
+        }), n = [], e = 0; e < this.attrs.items; e++) {
+          var o = t[e][2],
+              r = t[e][1],
+              i = t[e][0];
+          n += ' \n              <svg class="stars-svg stars-svg-'.concat(e, '" width="').concat(o, 'px" height="').concat(o, 'px" style="left: ').concat(i, "px; top:").concat(r, 'px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50.15">\n                <defs>\n                  <radialGradient id="radial-gradient" cx="25.98" cy="26.84" r="22.27" gradientUnits="userSpaceOnUse">\n                    <stop offset="0" stop-color="#fff9a6" stop-opacity="0.9"/>\n                    <stop offset="0.07" stop-color="#fffab3" stop-opacity="0.77"/>\n                    <stop offset="0.2" stop-color="#fffbc7" stop-opacity="0.57"/>\n                    <stop offset="0.34" stop-color="#fffcd8" stop-opacity="0.4"/>\n                    <stop offset="0.47" stop-color="#fffde6" stop-opacity="0.25"/>\n                    <stop offset="0.6" stop-color="#fffef1" stop-opacity="0.14"/>\n                    <stop offset="0.74" stop-color="#fffff9" stop-opacity="0.06"/>\n                    <stop offset="0.87" stop-color="#fffffd" stop-opacity="0.02"/>\n                    <stop offset="1" stop-color="#fff" stop-opacity="0"/>\n                  </radialGradient>\n                </defs>\n                <title>Asset 10</title>\n                <g id="Layer_2" data-name="Layer 2">\n                  <g id="Layer_2-2" data-name="Layer 2">\n                    <g>\n                      <circle cx="25.98" cy="26.84" r="22.27" fill="url(#radial-gradient)"/>\n                      <path id="stars-svg-path-1" d="M.15,26.27q13.13-2,18.73-4.52Q24.31,19.32,26,.16h0A.18.18,0,0,1,26.14,0a.19.19,0,0,1,.17.17q.6,17.88,6.81,21.58t16.72,4.62h0a.18.18,0,0,1,.16.2.19.19,0,0,1-.16.16Q38.1,27.86,33.12,32.05T26.49,50h0a.18.18,0,0,1-.36,0Q25.31,36.65,18.88,32T.17,26.62h0A.17.17,0,0,1,0,26.43.18.18,0,0,1,.15,26.27Z" fill="').concat(this.attrs.starColor, '" fill-rule="evenodd"/>\n                    </g>\n                  </g>\n                </g>\n              </svg>');
         }
 
-        return '\n    <div class="wrapper">\n      '.concat(t, "\n    </div>\n    \n    ");
+        return '\n    <div class="wrapper">\n      '.concat(n, "\n    </div>\n    \n    ");
       }
     }, {
       key: "css",
@@ -413,21 +2177,21 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
         return "\n    .wrapper{\n      width: ".concat(this.attrs.width, "px;\n      height:").concat(this.attrs.height, "px;\n      \n    }\n    .stars-svg{\n      position: absolute;\n      z-index: 3;\n\n    }\n\n  ");
       }
     }]), r;
-  }(d.HTMLClip);
+  }(t.HTMLClip);
 
   return {
     npm_name: "@kissmybutton/motorcortex-comets",
-    version: "0.0.9",
+    version: "1.0.0",
     incidents: [{
-      exportable: h,
+      exportable: wt,
       name: "Comets",
       attributesValidationRules: function (t) {
-        for (var e = 1; e < arguments.length; e++) {
-          var n = null != arguments[e] ? arguments[e] : {};
-          e % 2 ? r(Object(n), !0).forEach(function (e) {
-            o(t, e, n[e]);
-          }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(n)) : r(Object(n)).forEach(function (e) {
-            Object.defineProperty(t, e, Object.getOwnPropertyDescriptor(n, e));
+        for (var n = 1; n < arguments.length; n++) {
+          var e = null != arguments[n] ? arguments[n] : {};
+          n % 2 ? s(Object(e), !0).forEach(function (n) {
+            a(t, n, e[n]);
+          }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(e)) : s(Object(e)).forEach(function (n) {
+            Object.defineProperty(t, n, Object.getOwnPropertyDescriptor(e, n));
           });
         }
 
@@ -490,7 +2254,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function _type
         }
       })
     }, {
-      exportable: g,
+      exportable: kt,
       name: "Stars"
     }]
   };
@@ -1770,7 +3534,7 @@ return Promise$1;
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => "5edee6db6ffb46ebb514"
+/******/ 		__webpack_require__.h = () => "3fb74a4d8f2d80996028"
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
