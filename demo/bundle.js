@@ -183,17 +183,17 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
         writable: !0,
         configurable: !0
       }
-    }), n && u(t, n);
+    }), n && l(t, n);
   }
 
-  function l(t) {
-    return (l = Object.setPrototypeOf ? Object.getPrototypeOf : function (t) {
+  function u(t) {
+    return (u = Object.setPrototypeOf ? Object.getPrototypeOf : function (t) {
       return t.__proto__ || Object.getPrototypeOf(t);
     })(t);
   }
 
-  function u(t, n) {
-    return (u = Object.setPrototypeOf || function (t, n) {
+  function l(t, n) {
+    return (l = Object.setPrototypeOf || function (t, n) {
       return t.__proto__ = n, t;
     })(t, n);
   }
@@ -220,10 +220,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
     return function () {
       var e,
-          o = l(t);
+          o = u(t);
 
       if (n) {
-        var r = l(this).constructor;
+        var r = u(this).constructor;
         e = Reflect.construct(o, arguments, r);
       } else e = o.apply(this, arguments);
 
@@ -474,14 +474,14 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
           s = parseInt(r[3], 10) / 100,
           p = r[4] || 1;
 
-      function l(t, n, e) {
+      function u(t, n, e) {
         return e < 0 && (e += 1), e > 1 && (e -= 1), e < 1 / 6 ? t + 6 * (n - t) * e : e < .5 ? n : e < 2 / 3 ? t + (n - t) * (2 / 3 - e) * 6 : t;
       }
 
       if (0 == a) n = e = o = s;else {
-        var u = s < .5 ? s * (1 + a) : s + a - s * a,
-            c = 2 * s - u;
-        n = l(c, u, i + 1 / 3), e = l(c, u, i), o = l(c, u, i - 1 / 3);
+        var l = s < .5 ? s * (1 + a) : s + a - s * a,
+            c = 2 * s - l;
+        n = u(c, l, i + 1 / 3), e = u(c, l, i), o = u(c, l, i - 1 / 3);
       }
       return "rgba(" + 255 * n + "," + 255 * e + "," + 255 * o + "," + p + ")";
     }(t) : void 0;
@@ -654,12 +654,12 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
           a = I.arr(i) ? i[1] : i,
           s = V(a),
           p = F(n.target, t.name, s, n),
-          l = e ? e.to.original : p,
-          u = I.arr(i) ? i[0] : l,
-          c = V(u) || V(p),
+          u = e ? e.to.original : p,
+          l = I.arr(i) ? i[0] : u,
+          c = V(l) || V(p),
           f = s || c;
 
-      return I.und(a) && (a = l), r.from = K(u, f), r.to = K(H(a, u), f), r.start = e ? e.end : 0, r.end = r.start + r.duration, r.isPath = !1, r.isColor = I.col(r.from.original), r.isColor && (r.round = 1), e = r, r;
+      return I.und(a) && (a = u), r.from = K(l, f), r.to = K(H(a, l), f), r.start = e ? e.end : 0, r.end = r.start + r.duration, r.isPath = !1, r.isColor = I.col(r.from.original), r.isColor && (r.round = 1), e = r, r;
     });
   }
 
@@ -793,16 +793,16 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
               a = r.animatable,
               s = r.tweens,
               p = s.length - 1,
-              l = s[p];
-          p && (l = T(s, function (n) {
+              u = s[p];
+          p && (u = T(s, function (n) {
             return t < n.end;
-          })[0] || l);
+          })[0] || u);
 
-          for (var u = C(t - l.start, 0, l.duration) / l.duration, c = l.to.strings, f = l.round, d = [], y = l.to.numbers.length, h = void 0, m = 0; m < y; m++) {
+          for (var l = C(t - u.start, 0, u.duration) / u.duration, c = u.to.strings, f = u.round, d = [], y = u.to.numbers.length, h = void 0, m = 0; m < y; m++) {
             var g = void 0,
-                v = l.to.numbers[m],
-                b = l.from.numbers[m] || 0;
-            g = b + u * (v - b), f && (l.isColor && m > 2 || (g = Math.round(g * f) / f)), d.push(g);
+                v = u.to.numbers[m],
+                b = u.from.numbers[m] || 0;
+            g = b + l * (v - b), f && (u.isColor && m > 2 || (g = Math.round(g * f) / f)), d.push(g);
           }
 
           var x = c.length;
@@ -849,7 +849,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
     return o;
   }
 
-  function lt(t) {
+  function ut(t) {
     if (t.getTotalLength) return t.getTotalLength();
 
     switch (t.tagName.toLowerCase()) {
@@ -885,7 +885,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
     }
   }
 
-  function ut(t, n) {
+  function lt(t, n) {
     var e = n || {},
         o = e.el || function (t) {
       for (var n = t.parentNode; I.svg(n) && I.svg(n.parentNode);) {
@@ -915,8 +915,8 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
   at.version = "3.1.0", at.get = F, at.set = et, at.convertPx = U, at.penner = R, at.path = function (t) {
     return {
       el: t,
-      svg: ut(t),
-      totalLength: lt(t),
+      svg: lt(t),
+      totalLength: ut(t),
       deltaCorrections: {
         x: 4,
         y: 5
@@ -930,7 +930,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
       return t.el.getPointAtLength(r);
     }
 
-    var r = ut(t.el, t.svg),
+    var r = lt(t.el, t.svg),
         i = o(),
         a = o(-1),
         s = o(1);
@@ -998,15 +998,15 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                     a,
                     s,
                     p,
-                    l,
                     u,
+                    l,
                     c = e.split("(")[1].split(")")[0].split(",");
-                return o = c, r = Math.atan2(o[1], o[0]), i = Math.pow(o[0], 2) + Math.pow(o[1], 2), a = Math.pow(o[2], 2) + Math.pow(o[3], 2), s = Math.sqrt(i), p = (o[0] * o[3] - o[2] * o[1]) / s, l = Math.atan2(o[0] * o[2] + o[1] * o[3], i), u = Math.atan2(o[1] * o[3] + o[0] * o[2], a), {
+                return o = c, r = Math.atan2(o[1], o[0]), i = Math.pow(o[0], 2) + Math.pow(o[1], 2), a = Math.pow(o[2], 2) + Math.pow(o[3], 2), s = Math.sqrt(i), p = (o[0] * o[3] - o[2] * o[1]) / s, u = Math.atan2(o[0] * o[2] + o[1] * o[3], i), l = Math.atan2(o[1] * o[3] + o[0] * o[2], a), {
                   rotate: r / (Math.PI / 180) + "deg",
                   scaleX: s,
                   scaleY: p,
-                  skewX: (1 === i ? l / (Math.PI / 180) : 0) + "deg",
-                  skewY: (1 === a ? u / (Math.PI / 180) : 0) + "deg",
+                  skewX: (1 === i ? u / (Math.PI / 180) : 0) + "deg",
+                  skewY: (1 === a ? l / (Math.PI / 180) : 0) + "deg",
                   translateX: o[4] + "px",
                   translateY: o[5] + "px"
                 };
@@ -1946,12 +1946,12 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
     }
 
     for (var o = t.divisions || 4, r = t.numberOfElements % o, i = (t.numberOfElements - r) / o, a = (t.to - t.from) / o, s = [], p = 0; p < i; p++) {
-      for (var l = 0; l < o; l++) {
-        var u = {
-          from: t.from + a * l,
-          to: t.from + a * (l + 1)
+      for (var u = 0; u < o; u++) {
+        var l = {
+          from: t.from + a * u,
+          to: t.from + a * (u + 1)
         };
-        s.push(u);
+        s.push(l);
       }
     }
 
@@ -2029,7 +2029,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
             delay: this.comets[t][1],
             repeats: this.attrs.repeats
           });
-          console.log(this.addIncident(e, 0));
+          this.addIncident(e, 0);
         }
       }
     }, {
@@ -2059,17 +2059,17 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
         var a = [];
         this.itemData = [];
 
-        for (var s = 61 * Math.PI / 180, p = 29 * Math.PI / 180, l = 0; l < this.attrs.items; l++) {
-          var u = this.comets[l][2],
-              c = u * Math.sin(p),
-              f = u * Math.sin(s),
-              d = this.comets[l][3];
+        for (var s = 61 * Math.PI / 180, p = 29 * Math.PI / 180, u = 0; u < this.attrs.items; u++) {
+          var l = this.comets[u][2],
+              c = l * Math.sin(p),
+              f = l * Math.sin(s),
+              d = this.comets[u][3];
           this.itemData.push({
             left: d,
             top: -f,
             width: c,
-            size: u
-          }), a += ' \n                <svg class="comet-svg comet-svg-'.concat(l, '" style="left: ').concat(d, "px; top: -").concat(f, "px; width: ").concat(c, "px; height: ").concat(f, 'px;" xmlns="http://www.w3.org/2000/svg" class="comet-green-svg" data-name="Layer 1" viewBox="0 0 450 270.44">\n                <defs>\n                    <linearGradient id="b" x1="-56.99" x2="-56.74" y1="394.68" y2="394.93" gradientTransform="matrix(1363.47 0 0 -819.42 77776.05 323638.12)" gradientUnits="userSpaceOnUse">\n                    <stop offset="0" stop-color="').concat(this.attrs.auraOuter[0], '" stop-opacity=".59"/>\n                    <stop offset="1" stop-color="').concat(this.attrs.auraOuter[1], '" stop-opacity="0"/>\n                    </linearGradient>\n                    <linearGradient id="d" x1="-56.97" x2="-56.79" y1="394.95" y2="395.11" gradientTransform="matrix(900.62 0 0 -542.55 51377.26 214502.16)" gradientUnits="userSpaceOnUse">\n                    <stop offset="0" stop-color="').concat(this.attrs.auraIner[0], '"/>\n                    <stop offset=".31" stop-color="').concat(this.attrs.auraIner[1], '" stop-opacity=".97"/>\n                    <stop offset="1" stop-color="').concat(this.attrs.auraIner[2], '" stop-opacity="0"/>\n                    </linearGradient>\n                    <linearGradient id="f" x1="-56.81" x2="-56.49" y1="399.49" y2="399.76" gradientTransform="matrix(116.79 0 0 -75.59 6649.18 30453.64)" gradientUnits="userSpaceOnUse">\n                    <stop offset="0" stop-color="').concat(this.attrs.meteoriteColors[0], '"/>\n                    <stop offset="1" stop-color="').concat(this.attrs.meteoriteColors[1], '"/>\n                    </linearGradient>\n                    <mask id="a" width="450" height="270.44" x="0" y="0" maskUnits="userSpaceOnUse">\n                    <path fill="#fff" fill-rule="evenodd" d="M11.33 230a21.52 21.52 0 0020.31 38L450 38 429.7 0 11.33 230z"/>\n                    </mask>\n                    <mask id="c" width="297.24" height="179.06" x="7.51" y="84.83" maskUnits="userSpaceOnUse">\n                    <path fill="#fff" fill-rule="evenodd" d="M14.65 238.41a13.55 13.55 0 0012.78 23.89l277.32-153.58L292 84.83 14.65 238.41z"/>\n                    </mask>\n                    <mask id="e" width="38.55" height="24.95" x="12.81" y="234.29" maskUnits="userSpaceOnUse">\n                    <path fill="#fff" fill-rule="evenodd" d="M17.69 241.85a9.24 9.24 0 008.73 16.29c4.5-2.41 24.94-23.85 24.94-23.85s-29.17 5.15-33.67 7.56"/>\n                    </mask>\n                </defs>\n                <g mask="url(#a)">\n                    <path fill="url(#b)" fill-rule="evenodd" d="M11.33 230a21.52 21.52 0 0020.31 38L450 38 429.7 0 11.33 230z"/>\n                </g>\n                <g mask="url(#c)">\n                    <path fill="url(#d)" fill-rule="evenodd" d="M14.65 238.41a13.55 13.55 0 0012.78 23.89l277.32-153.58L292 84.83 14.65 238.41z"/>\n                </g>\n                <g mask="url(#e)">\n                    <path fill="url(#f)" fill-rule="evenodd" d="M17.69 241.85a9.24 9.24 0 008.73 16.29c4.5-2.41 24.94-23.85 24.94-23.85s-29.17 5.15-33.67 7.56"/>\n                </g>\n                </svg>\n            ');
+            size: l
+          }), a += ' \n                <svg class="comet-svg comet-svg-'.concat(u, '" style="left: ').concat(d, "px; top: -").concat(f, "px; width: ").concat(c, "px; height: ").concat(f, 'px;" xmlns="http://www.w3.org/2000/svg" class="comet-green-svg" data-name="Layer 1" viewBox="0 0 450 270.44">\n                <defs>\n                    <linearGradient id="b" x1="-56.99" x2="-56.74" y1="394.68" y2="394.93" gradientTransform="matrix(1363.47 0 0 -819.42 77776.05 323638.12)" gradientUnits="userSpaceOnUse">\n                    <stop offset="0" stop-color="').concat(this.attrs.auraOuter[0], '" stop-opacity=".59"/>\n                    <stop offset="1" stop-color="').concat(this.attrs.auraOuter[1], '" stop-opacity="0"/>\n                    </linearGradient>\n                    <linearGradient id="d" x1="-56.97" x2="-56.79" y1="394.95" y2="395.11" gradientTransform="matrix(900.62 0 0 -542.55 51377.26 214502.16)" gradientUnits="userSpaceOnUse">\n                    <stop offset="0" stop-color="').concat(this.attrs.auraIner[0], '"/>\n                    <stop offset=".31" stop-color="').concat(this.attrs.auraIner[1], '" stop-opacity=".97"/>\n                    <stop offset="1" stop-color="').concat(this.attrs.auraIner[2], '" stop-opacity="0"/>\n                    </linearGradient>\n                    <linearGradient id="f" x1="-56.81" x2="-56.49" y1="399.49" y2="399.76" gradientTransform="matrix(116.79 0 0 -75.59 6649.18 30453.64)" gradientUnits="userSpaceOnUse">\n                    <stop offset="0" stop-color="').concat(this.attrs.meteoriteColors[0], '"/>\n                    <stop offset="1" stop-color="').concat(this.attrs.meteoriteColors[1], '"/>\n                    </linearGradient>\n                    <mask id="a" width="450" height="270.44" x="0" y="0" maskUnits="userSpaceOnUse">\n                    <path fill="#fff" fill-rule="evenodd" d="M11.33 230a21.52 21.52 0 0020.31 38L450 38 429.7 0 11.33 230z"/>\n                    </mask>\n                    <mask id="c" width="297.24" height="179.06" x="7.51" y="84.83" maskUnits="userSpaceOnUse">\n                    <path fill="#fff" fill-rule="evenodd" d="M14.65 238.41a13.55 13.55 0 0012.78 23.89l277.32-153.58L292 84.83 14.65 238.41z"/>\n                    </mask>\n                    <mask id="e" width="38.55" height="24.95" x="12.81" y="234.29" maskUnits="userSpaceOnUse">\n                    <path fill="#fff" fill-rule="evenodd" d="M17.69 241.85a9.24 9.24 0 008.73 16.29c4.5-2.41 24.94-23.85 24.94-23.85s-29.17 5.15-33.67 7.56"/>\n                    </mask>\n                </defs>\n                <g mask="url(#a)">\n                    <path fill="url(#b)" fill-rule="evenodd" d="M11.33 230a21.52 21.52 0 0020.31 38L450 38 429.7 0 11.33 230z"/>\n                </g>\n                <g mask="url(#c)">\n                    <path fill="url(#d)" fill-rule="evenodd" d="M14.65 238.41a13.55 13.55 0 0012.78 23.89l277.32-153.58L292 84.83 14.65 238.41z"/>\n                </g>\n                <g mask="url(#e)">\n                    <path fill="url(#f)" fill-rule="evenodd" d="M17.69 241.85a9.24 9.24 0 008.73 16.29c4.5-2.41 24.94-23.85 24.94-23.85s-29.17 5.15-33.67 7.56"/>\n                </g>\n                </svg>\n            ');
         }
 
         return '\n            <div class="wrapper">\n            '.concat(a, "\n            </div>\n        ");
@@ -2181,7 +2181,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
   return {
     npm_name: "@kissmybutton/motorcortex-comets",
-    version: "1.0.0",
+    version: "1.0.2",
     incidents: [{
       exportable: wt,
       name: "Comets",
@@ -3534,7 +3534,7 @@ return Promise$1;
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => "3fb74a4d8f2d80996028"
+/******/ 		__webpack_require__.h = () => "58745eda18f2774b2023"
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

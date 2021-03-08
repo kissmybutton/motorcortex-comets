@@ -130,7 +130,7 @@ export default class Comets extends HTMLClip {
           repeats: this.attrs.repeats,
         }
       );
-      console.log(this.addIncident(moveMagentComet, 0));
+      this.addIncident(moveMagentComet, 0);
     }
   }
 }
