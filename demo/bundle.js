@@ -2181,7 +2181,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
   return {
     npm_name: "@kissmybutton/motorcortex-comets",
-    version: "1.0.2",
+    version: "1.0.3",
     incidents: [{
       exportable: wt,
       name: "Comets",
@@ -3534,7 +3534,7 @@ return Promise$1;
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => "58745eda18f2774b2023"
+/******/ 		__webpack_require__.h = () => "6c55bd072391f1f5c302"
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
