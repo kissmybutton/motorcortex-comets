@@ -1,11 +1,7 @@
-import Comets from './Incidents/Comets';
-import Stars from "./Incidents/Stars"
-
-import {
-cometValidationRules
-} from "./validation";
-
-import {name,version}  from '../package.json'
+import Comets from "./Incidents/Comets";
+import Stars from "./Incidents/Stars";
+import { cometValidationRules } from "./validation";
+import { name, version } from "../package.json";
 
 export default {
   npm_name: name,
@@ -14,18 +10,12 @@ export default {
     {
       exportable: Comets,
       name: "Comets",
-      attributesValidationRules: { ...cometValidationRules }
-    },{
+      attributesValidationRules: { ...cometValidationRules },
+    },
+    {
       exportable: Stars,
       name: "Stars",
       // attributesValidationRules: { ...cometValidationRules }
     },
   ],
 };
-
-
-
-
-
-
-

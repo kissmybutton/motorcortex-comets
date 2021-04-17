@@ -1,5 +1,5 @@
 import { HTMLClip, loadPlugin, Combo } from "@kissmybutton/motorcortex";
-const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
+import AnimeDefinition from "@kissmybutton/motorcortex-anime";
 const Anime = loadPlugin(AnimeDefinition);
 import { spatial, timely } from "../helpers/randomizer";
 
@@ -9,7 +9,7 @@ export default class Stars extends HTMLClip {
       dimensions: [
         [0, this.attrs.width],
         [0, this.attrs.height],
-        [this.attrs.starMinSize, this.attrs.starMaxSize]
+        [this.attrs.starMinSize, this.attrs.starMaxSize],
       ],
       divisions: [
         Math.floor(this.attrs.items / 2),
@@ -91,13 +91,12 @@ export default class Stars extends HTMLClip {
     }
 
     const timeData = timely({
-      duration: this.attrs.duration/this.attrs.repeats,
+      duration: this.attrs.duration / this.attrs.repeats,
       divisions: 3,
       numberOfElements: this.attrs.items,
       minDuration: 0.2,
-      maxDuration: 1
+      maxDuration: 1,
     });
-
 
     for (let i = 0; i < this.attrs.items; i++) {
       const starScale = new Combo(
@@ -112,7 +111,7 @@ export default class Stars extends HTMLClip {
                 ),
               },
               props: {
-                duration: Math.round(timeData[i][1]/2),
+                duration: Math.round(timeData[i][1] / 2),
               },
               position: 0,
             },
@@ -125,16 +124,16 @@ export default class Stars extends HTMLClip {
                 ),
               },
               props: {
-                duration: Math.round(timeData[i][1]/2),
+                duration: Math.round(timeData[i][1] / 2),
               },
-              position: Math.round(timeData[i][1]/2),
+              position: Math.round(timeData[i][1] / 2),
             },
           ],
         },
         {
           selector: `.stars-svg-${i}`,
           delay: timeData[i][0],
-          repeats: this.attrs.repeats
+          repeats: this.attrs.repeats,
         }
       );
       this.addIncident(starScale, 0);
