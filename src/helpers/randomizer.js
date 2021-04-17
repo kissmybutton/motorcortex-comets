@@ -3,7 +3,7 @@ const maxDurationDefault = 0.6;
 const minDurationDefault = 0.2;
 
 function _shuffle(array) {
-  var currentIndex = array.length,
+  let currentIndex = array.length,
     temporaryValue,
     randomIndex;
 
@@ -39,8 +39,7 @@ export function _addDimension(params, points) {
   }
   const divisions = params.divisions || defaultDivisions;
   const lastRowElements = params.numberOfElements % divisions;
-  const fullRows =
-    (params.numberOfElements - lastRowElements) / divisions;
+  const fullRows = (params.numberOfElements - lastRowElements) / divisions;
   const step = (params.to - params.from) / divisions;
 
   const divisionsByElement = [];
