@@ -122,30 +122,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
   var e = n(t);
 
   function o(t, n) {
-    if (!(t instanceof n)) throw new TypeError("Cannot call a class as a function");
-  }
-
-  function r(t, n) {
-    for (var e = 0; e < n.length; e++) {
-      var o = n[e];
-      o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(t, o.key, o);
-    }
-  }
-
-  function i(t, n, e) {
-    return n && r(t.prototype, n), e && r(t, e), t;
-  }
-
-  function a(t, n, e) {
-    return n in t ? Object.defineProperty(t, n, {
-      value: e,
-      enumerable: !0,
-      configurable: !0,
-      writable: !0
-    }) : t[n] = e, t;
-  }
-
-  function s(t, n) {
     var e = Object.keys(t);
 
     if (Object.getOwnPropertySymbols) {
@@ -156,6 +132,30 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
     }
 
     return e;
+  }
+
+  function r(t, n) {
+    if (!(t instanceof n)) throw new TypeError("Cannot call a class as a function");
+  }
+
+  function i(t, n) {
+    for (var e = 0; e < n.length; e++) {
+      var o = n[e];
+      o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(t, o.key, o);
+    }
+  }
+
+  function a(t, n, e) {
+    return n && i(t.prototype, n), e && i(t, e), t;
+  }
+
+  function s(t, n, e) {
+    return n in t ? Object.defineProperty(t, n, {
+      value: e,
+      enumerable: !0,
+      configurable: !0,
+      writable: !0
+    }) : t[n] = e, t;
   }
 
   function p(t, n) {
@@ -1992,10 +1992,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
     var n = f(e);
 
     function e() {
-      return o(this, e), n.apply(this, arguments);
+      return r(this, e), n.apply(this, arguments);
     }
 
-    return i(e, [{
+    return a(e, [{
       key: "html",
       get: function get() {
         this.comets = bt({
@@ -2065,14 +2065,14 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
   }(t.HTMLClip),
       Ot = t.loadPlugin(gt),
       Pt = function (n) {
-    p(r, n);
-    var e = f(r);
+    p(o, n);
+    var e = f(o);
 
-    function r() {
-      return o(this, r), e.apply(this, arguments);
+    function o() {
+      return r(this, o), e.apply(this, arguments);
     }
 
-    return i(r, [{
+    return a(o, [{
       key: "html",
       get: function get() {
         for (var t = function (t) {
@@ -2157,7 +2157,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
           this.addIncident(r, 0);
         }
       }
-    }]), r;
+    }]), o;
   }(t.HTMLClip);
 
   return {
@@ -2169,9 +2169,9 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
       attributesValidationRules: function (t) {
         for (var n = 1; n < arguments.length; n++) {
           var e = null != arguments[n] ? arguments[n] : {};
-          n % 2 ? s(Object(e), !0).forEach(function (n) {
-            a(t, n, e[n]);
-          }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(e)) : s(Object(e)).forEach(function (n) {
+          n % 2 ? o(Object(e), !0).forEach(function (n) {
+            s(t, n, e[n]);
+          }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(e)) : o(Object(e)).forEach(function (n) {
             Object.defineProperty(t, n, Object.getOwnPropertyDescriptor(e, n));
           });
         }
@@ -3522,7 +3522,7 @@ return Promise$1;
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("637789cf5f33b7c4db25")
+/******/ 		__webpack_require__.h = () => ("99f46b8c380a9cbc209b")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
