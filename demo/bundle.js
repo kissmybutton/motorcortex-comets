@@ -937,7 +937,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
       mt = "color",
       gt = {
     npm_name: "@kissmybutton/motorcortex-anime",
-    version: "2.1.14",
+    version: "2.1.16",
     incidents: [{
       exportable: function (t) {
         b(e, t);
@@ -2154,7 +2154,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
   return {
     npm_name: "@kissmybutton/motorcortex-comets",
-    version: "1.0.5",
+    version: "1.0.6",
     incidents: [{
       exportable: wt,
       name: "Comets",
@@ -3500,7 +3500,7 @@ return Promise$1;
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("6fc6421947d0fbfbc91e")
+/******/ 		__webpack_require__.h = () => ("d6fd2dd836162c31fa4f")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
